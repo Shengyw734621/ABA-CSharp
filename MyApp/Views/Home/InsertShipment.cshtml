@@ -19,6 +19,10 @@
         /* border: 1px solid #000;   */
         font-size: 18px;       
     }
+    .pdf-container{
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
     .header {
         position: relative; /* logo 會以這個為定位基準 */
         text-align: center;
@@ -145,6 +149,9 @@
     tr.note-row:hover {
         background: #fff !important;
     }
+    .note{
+        text-align: right;
+    }
     tr.sign-row{
         background: #fff !important;
         cursor: default !important;
@@ -193,11 +200,36 @@
         text-align: center;
         margin-top: 20px;
     }
+    input{
+        text-align: center;
+        font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    }
+    input[type="checkbox"] {
+        appearance: none;         /* 標準屬性 */
+        width: 20px;
+        height: 20px;
+        border: 1px solid #333;
+        transform: scale(0.8);
+        border-radius: 0;        /* 完全方形 */
+    }
+    .major-ProductName{
+        appearance: none;
+        resize: none;
+        width: 300px;
+        height: 50px;
+        border: none;
+        text-align: left;
+        font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+    }
+    .minor-ProductName{
+        text-align: left;
+    }
     button {
         margin: 5px;
         padding: 8px 15px;
         border: none;
         border-radius: 6px;
+        font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
         background: #007bff;
         color: #fff;
         cursor: pointer;
@@ -208,98 +240,101 @@
 </style>
 
 <div id="content">
-    <!-- 公司抬頭 -->
-    <div class="header">
-        <img src="/images/logo.png" alt="公司 Logo" class="logo">
-        <div class="header-container">
-            <h2 class="company-name">威森國際股份有限公司</h2>
+    <div class="pdf-container">
+        <!-- 公司抬頭 -->
+        <div class="header">
+            <img src="/images/logo.png" alt="公司 Logo" class="logo">
+            <div class="header-container">
+                <h2 class="company-name">威森國際股份有限公司</h2>
+            </div>
+            <h1 class="shipment-title">
+                <span class="main">出貨單</span>
+                <span class="sub">
+                    <span class="paren">(</span>
+                    <span class="text">一式二份</span>
+                    <span class="paren">)</span>
+                </span>
+            </h1>
         </div>
-        <h1 class="shipment-title">
-            <span class="main">出貨單</span>
-            <span class="sub">
-                <span class="paren">(</span>
-                <span class="text">一式二份</span>
-                <span class="paren">)</span>
-            </span>
-        </h1>
-    </div>
 
-    <!-- 客戶資訊 -->
-    <div class="customer-info">
-        <p></p>
-        <p class="ShipmentNo">出貨單號：<input type="text" name="ShipmentNo" value="CB-001-"/></p>
-        <p class="CustomerName">客　　戶：<input type="text" name="CustomerName" /></p>
-        <p>
-        出貨日期：
-            <span class="date-select">
-                <select id="year"></select>.
-                <select id="month"></select>.
-                <select id="day"></select>
-            </span>
-        </p>
-        <p class="ContactPerson">聯　　絡　　人　：<input type="text" name="ContactPerson" /></p>
-        <p>電　　話：<input type="text" name="Phone" /></p>
-        <p>出貨地址：<input type="text" name="Address"/></p> 
-        <p>傳　　真：<input type="text" name="Fax" /></p>
-    </div>
+        <!-- 客戶資訊 -->
+        <div class="customer-info">
+            <p></p>
+            <p class="ShipmentNo">出貨單號：<input type="text" name="ShipmentNo" value="CB-001-"/></p>
+            <p class="CustomerName">客　　戶：<input type="text" name="CustomerName" /></p>
+            <p>
+            出貨日期：
+                <span class="date-select">
+                    <select id="year"></select>.
+                    <select id="month"></select>.
+                    <select id="day"></select>
+                </span>
+            </p>
+            <p class="ContactPerson">聯　　絡　　人　：<input type="text" name="ContactPerson" /></p>
+            <p>電　　話：<input type="text" name="Phone" /></p>
+            <p>出貨地址：<input type="text" name="Address"/></p> 
+            <p>傳　　真：<input type="text" name="Fax" /></p>
+        </div>
 
-    <div class="table-container">
-        <!-- 表格 -->
-        <table class="shipment-table">
-            <thead>
-            <tr>
-                <th>NO.</th>
-                <th>類別</th>
-                <th>產品名稱</th>
-                <th>型號/序號</th>
-                <th>數量</th>
-            </tr>
-            </thead>
-            <tbody id="shipmentItems">
-                <!-- 範例第一列為大項 -->
-                <tr class="major">
-                    <td class="no-cell">1</td>
-                    <td><input type="text" name="ProductType" /></td>
-                    <td><input type="text" name="ProductName" class="long-input" /></td>
-                    <td><input type="text" name="ProductSN" /></td>
-                    <td><input type="text" name="Quantity" /></td>
+        <div class="table-container">
+            <!-- 表格 -->
+            <table class="shipment-table">
+                <thead>
+                <tr>
+                    <th>NO.</th>
+                    <th>類別</th>
+                    <th>產品名稱</th>
+                    <th>型號/序號</th>
+                    <th>數量</th>
                 </tr>
+                </thead>
+                <tbody id="shipmentItems">
+                    <!-- 範例第一列為大項 -->
+                    <tr class="major">
+                        <td class="no-cell">1</td>
+                        <td><input type="text" name="ProductType" /></td>
+                        <td><textarea type="text" name="ProductName" class="major-ProductName"></textarea></td>
+                        <td><input type="text" name="ProductSN" /></td>
+                        <td><input type="text" name="Quantity" /></td>
+                    </tr>
 
-                <!-- 備註列 -->
-                <tr class="note-row">
-                    <td>備 註</td>
-                    <td colspan="4"><input type="text" name="Note" class="long-input" /></td>
+                    <!-- 備註列 -->
+                    <tr class="note-row">
+                        <td>備 註</td>
+                        <td colspan="4"><input type="text" name="Note" class="note" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="signature-table">
+                <!-- 簽名列 -->
+                <tr class="sign-row">
+                    <td class="person">
+                        業 務
+                    </td>
+                    <td class="sign">
+                        <select id="salesSelect" name="SalesSign">
+                            <option value="">載入中...</option>
+                        </select>
+                    </td>
+                    <td class="person">
+                        經 辦
+                    </td>
+                    <td class="sign">
+                        <select id="handlerSelect">
+                            <option value="">載入中...</option>
+                        </select>
+                    </td>
+                    <td class="person">
+                        客 戶
+                    </td>
+                    <td class="sign">
+                        <input type="text" name="CustomerSign" />
+                    </td>
                 </tr>
-            </tbody>
-        </table>
-        <table class="signature-table">
-            <!-- 簽名列 -->
-            <tr class="sign-row">
-                <td class="person">
-                    業 務
-                </td>
-                <td class="sign">
-                    <select id="salesSelect" name="SalesSign">
-                        <option value="">載入中...</option>
-                    </select>
-                </td>
-                <td class="person">
-                    經 辦
-                </td>
-                <td class="sign">
-                    <select id="handlerSelect">
-                        <option value="">載入中...</option>
-                    </select>
-                </td>
-                <td class="person">
-                    客 戶
-                </td>
-                <td class="sign">
-                    <input type="text" name="CustomerSign" />
-                </td>
-            </tr>
-        </table>
+            </table>
+        </div>
     </div>
+    
     
 
     <!-- 按鈕 -->
@@ -452,7 +487,7 @@
                 tr.innerHTML = `
                     <td class="no-cell"></td>
                     <td><input type="text" name="ProductType" /></td>
-                    <td><input type="text" name="ProductName" class="long-input" /></td>
+                    <td><textarea type="text" name="ProductName" class="major-ProductName"></textarea></td>
                     <td><input type="text" name="ProductSN" /></td>
                     <td><input type="text" name="Quantity" /></td>
                 `;
@@ -466,10 +501,10 @@
                 tr.className = 'minor';
                 tr.innerHTML = `
                     <td class="no-cell"></td>
-                    <td><input type="text" name="ProductType" /></td>
-                    <td><input type="text" name="ProductName" class="long-input" /></td>
+                    <td></td>
+                    <td><input type="text" name="ProductName" class="minor-ProductName"/></td>
                     <td><input type="text" name="ProductSN" /></td>
-                    <td><input type="text" name="Quantity" /></td>
+                    <td style="text-align:center;"><input type="checkbox" name="QuantityCheckbox" style="with:50%;" /></td>
                 `;
                 bindRowClick(tr);
                 return tr;
