@@ -24,7 +24,16 @@ namespace MyApp.Services
                 Console.WriteLine(row.First_Name);
             }
             return result;
-            
+
+        }
+        public List<string> GetEmployeesByDepartment(string department)
+        {
+            using var conn = new MySqlConnection(_connectionString);
+            string sql = "SELECT First_Name, Last_Name FROM aba.employee WHERE department=@Dept";
+            var list = conn.Query(sql, new { Dept = department })
+                        .Select(e => $"{e.First_Name} {e.Last_Name}")
+                        .ToList();
+            return list;
         }
     }
 }

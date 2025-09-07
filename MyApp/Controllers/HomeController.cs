@@ -19,12 +19,21 @@ public class HomeController : Controller
         var handlers = _employeeService.GetAdminEmployees();
         return Json(handlers);
     }
-
+    //出貨單行政部簽名欄
     [HttpGet]
     public IActionResult GetShipmentHandlers()
     {
         var handlers = _shipmentService.GetAdministrativeEmployees() ?? new List<string>();
         return Json(handlers); // 直接回傳 JSON 陣列
+    }
+    //出貨單業務部簽名欄
+    [HttpGet]
+    public IActionResult GetSalesHandlers()
+    {
+        // 取得業務部員工全名
+        var handlers = _shipmentService.GetEmployeesByDepartment("營業部") 
+                    ?? new List<string>();
+        return Json(handlers);
     }
 
     public HomeController(

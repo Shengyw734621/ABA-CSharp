@@ -167,7 +167,8 @@
         border: none;
         width: 100%;/* 輸入框占比可自行調整 */
     }
-    #handlerSelect{
+    #handlerSelect,
+    #salesSelect{
         border: none;
         width: 100%;/* 輸入框占比可自行調整 */
         font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
@@ -278,7 +279,9 @@
                     業 務
                 </td>
                 <td class="sign">
-                    <input type="text" name="SalesSign" />
+                    <select id="salesSelect" name="SalesSign">
+                        <option value="">載入中...</option>
+                    </select>
                 </td>
                 <td class="person">
                     經 辦
@@ -375,7 +378,7 @@
 
 
     <script>
-        //簽名欄載入員工資料
+        //簽名欄載入行政部員工資料
         $(document).ready(function () {
             $.ajax({
                 url: '/Home/GetShipmentHandlers', // 打到後端的 action
@@ -401,6 +404,35 @@
                     alert("載入員工失敗！");
                 }
             });
+        });
+    </script>
+    
+    <script>
+        //簽名欄載入行政部員工資料
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('/Home/GetSalesHandlers')
+                .then(response => response.json())
+                .then(data => {
+                    const select = document.getElementById("salesSelect");
+                    select.innerHTML = "";
+                    if (data.length > 0) {
+                        data.forEach(name => {
+                            const opt = document.createElement("option");
+                            opt.value = name;
+                            opt.textContent = name; // 名字 + 姓氏
+                            select.appendChild(opt);
+                        });
+                    } else {
+                        const opt = document.createElement("option");
+                        opt.value = "";
+                        opt.textContent = "無可選擇人員";
+                        select.appendChild(opt);
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("載入員工失敗！");
+                });
         });
     </script>
 
