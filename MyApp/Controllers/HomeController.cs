@@ -20,6 +20,13 @@ public class HomeController : Controller
         return Json(handlers);
     }
 
+    [HttpGet]
+    public IActionResult GetShipmentHandlers()
+    {
+        var handlers = _shipmentService.GetAdministrativeEmployees() ?? new List<string>();
+        return Json(handlers); // 直接回傳 JSON 陣列
+    }
+
     public HomeController(
         ILogger<HomeController> logger,
         CustomerService customerService,

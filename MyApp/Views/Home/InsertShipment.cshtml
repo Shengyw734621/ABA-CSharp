@@ -167,7 +167,7 @@
         border: none;
         width: 100%;/* 輸入框占比可自行調整 */
     }
-    .HandlerSign{
+    #handlerSelect{
         border: none;
         width: 100%;/* 輸入框占比可自行調整 */
         font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
@@ -284,18 +284,8 @@
                     經 辦
                 </td>
                 <td class="sign">
-                    <select name="HandlerSign" class="HandlerSign">
-                        @if (ViewBag.Handlers != null && ((List<string>)ViewBag.Handlers).Any())
-                        {
-                            foreach (var name in ViewBag.Handlers)
-                            {
-                                <option value="@name">@name</option>
-                            }
-                        }
-                        else
-                        {
-                            <option value="">-- 無可選擇人員 --</option>
-                        }
+                    <select id="handlerSelect">
+                        <option value="">載入中...</option>
                     </select>
                 </td>
                 <td class="person">
@@ -331,6 +321,7 @@
 </div>
 
 @section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script>
         // 載入年份 & 月份
         const yearSelect = document.getElementById("year");
@@ -382,7 +373,39 @@
         updateDays();
     </script>
 
+
     <script>
+        //簽名欄載入員工資料
+        $(document).ready(function () {
+            $.ajax({
+                url: '/Home/GetShipmentHandlers', // 打到後端的 action
+                type: 'GET',
+                success: function (data) {
+                    let $select = $('#handlerSelect');
+                    $select.empty(); // 清空舊資料
+                    if (data.length > 0) {
+                        $.each(data, function (i, name) {
+                            $select.append($('<option>', {
+                                value: name,
+                                text: name
+                            }));
+                        });
+                    } else {
+                        $select.append($('<option>', {
+                            value: '',
+                            text: '無可選擇人員'
+                        }));
+                    }
+                },
+                error: function () {
+                    alert("載入員工失敗！");
+                }
+            });
+        });
+    </script>
+
+    <script>
+        //訂單項目欄位操作
         (function () {
             const tbody = document.getElementById('shipmentItems');
             const addMajorBtn = document.getElementById('addMajorBtn');
@@ -524,4 +547,5 @@
             });
         }
     </script>
+    
 }
