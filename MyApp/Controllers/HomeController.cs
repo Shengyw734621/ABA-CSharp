@@ -12,6 +12,8 @@ public class HomeController : Controller
     private readonly EmployeeService _employeeService;
     private readonly ILogger<HomeController> _logger;
 
+    private readonly ShipmentService _shipmentService;
+
     public IActionResult GetHandlers()
     {
         var handlers = _employeeService.GetAdminEmployees();
@@ -21,11 +23,13 @@ public class HomeController : Controller
     public HomeController(
         ILogger<HomeController> logger,
         CustomerService customerService,
-        EmployeeService employeeService)
+        EmployeeService employeeService,
+        ShipmentService shipmentService)
     {
         _logger = logger;
         _customerService = customerService;
         _employeeService = employeeService;
+        _shipmentService = shipmentService;
     }
 
     public IActionResult Index()
@@ -223,8 +227,13 @@ public class HomeController : Controller
         return View();
     }
     public IActionResult InsertShipment()
-    {
-        return View(); // 預設會去找 Views/Home/InsertShipment.cshtml
+    {   
+        var handlers = _shipmentService.GetAdministrativeEmployees() ?? new List<string>();
+        ViewBag.Handlers = handlers;
+        var count = handlers.Count();
+        Console.WriteLine($"抓到 {count} 名行政部員工");
+
+        return View();// 預設會去找 Views/Home/InsertShipment.cshtml
     }
 
     public IActionResult Maintenance()

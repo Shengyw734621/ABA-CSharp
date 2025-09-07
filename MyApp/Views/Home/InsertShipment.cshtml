@@ -69,6 +69,10 @@
         margin-left: -0.2em;
         margin-right: -0.2em;
     }
+    #year, #month, #day{
+        appearance: none;
+        border: none;
+    }
     .customer-info {
         margin-bottom: 20px;
         margin-left: 20px;
@@ -162,6 +166,14 @@
     tr.sign-row input {
         border: none;
         width: 100%;/* 輸入框占比可自行調整 */
+    }
+    .HandlerSign{
+        border: none;
+        width: 100%;/* 輸入框占比可自行調整 */
+        font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+        text-align: center;
+        appearance: none;
+
     }
     .signature-table{
         width: 99.8%;
@@ -272,8 +284,18 @@
                     經 辦
                 </td>
                 <td class="sign">
-                    <select name="HandlerSign" asp-items="@(new SelectList(ViewBag.AdminEmployees, "Value", "Text"))">
-                        <option value="">-- 請選擇 --</option>
+                    <select name="HandlerSign" class="HandlerSign">
+                        @if (ViewBag.Handlers != null && ((List<string>)ViewBag.Handlers).Any())
+                        {
+                            foreach (var name in ViewBag.Handlers)
+                            {
+                                <option value="@name">@name</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">-- 無可選擇人員 --</option>
+                        }
                     </select>
                 </td>
                 <td class="person">
@@ -331,7 +353,7 @@
         for (let m = 1; m <= 12; m++) {
             let opt = document.createElement("option");
             opt.value = m;
-            opt.textContent = m;
+            opt.textContent = String(m).padStart(2, "0");
             if (m === thisMonth) opt.selected = true; // 預設當月
             monthSelect.appendChild(opt);
         }
@@ -345,7 +367,7 @@
             for (let d = 1; d <= daysInMonth; d++) {
             let opt = document.createElement("option");
             opt.value = d;
-            opt.textContent = d;
+            opt.textContent = String(d).padStart(2, "0");
             if (d === thisDay && year === thisYear && month === thisMonth) {
                 opt.selected = true; // 預設今天
             }

@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<CustomerService>();
 builder.Services.AddScoped<EmployeeService>();
+builder.Services.AddScoped<ShipmentService>();
 builder.Services.AddSession();
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
