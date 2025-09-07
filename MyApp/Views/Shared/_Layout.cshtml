@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>..:: 威森國際股份有限公司 技術部資訊系統 ::..</title>
+    <script src="~/js/SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+    <script src="~/js/SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/002a2356e2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/js/SpryAssets/SpryMenuBarHorizontal.css">
+    <link rel="stylesheet" href="~/js/SpryAssets/SpryValidationTextField.css">
+    <link rel="icon" href="~/statics/aba-icon-192x192.png" type="image/png">
+    <link rel="stylesheet" href="~/css/style.css"  />
+    <link rel="stylesheet" href="~/css/normalize.css" />
+</head>
+<body>
+   <!-- 引用 Navbar -->
+    @Html.Partial("_Navbar")          
+
+    <!-- 主內容區域 -->
+    <div id="mainContent">
+        @RenderBody()
+    </div>
+
+    <!-- 引用 footer -->
+    @Html.Partial("_Footer")
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+<script src="~/js/scrollreveal/scrollreveal-master/scrollreveal-master/dist/scrollreveal.min.js"></script>
+<script src="~/npm/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="~/js/login/login.js"></script>
+<script src="~/js/search icon/search_icon.js"></script>
+<script src="~/js/menu toggle/menu_toggle.js"></script>
+<script>
+
+    // SpryAssets
+    var MenuBar1 = new Spry.Widget.MenuBar(
+        "MenuBar1"
+    );
+
+   
+
+    //scrollreveal
+    ScrollReveal().reveal('.about_title',{
+        delay:300,
+		duration:800,
+    }); 
+    ScrollReveal().reveal('.about_title_EN',{
+        delay:300,
+		duration:800,
+    }); 
+
+    ScrollReveal().reveal('.about_content_box',{
+		origin:'bottom',
+		distance:'75px',
+		delay:800,
+		duration:800,
+	});
+    ScrollReveal().reveal('.more_box',{
+		origin:'bottom',
+		distance:'75px',
+		delay:800,
+		duration:800,
+	});
+</script>
+<script>
+    $('.register_account').off('click').on('click', function () {
+        $('.session_area').css('display', 'none');
+        $('.register_area').fadeIn(300, function(){
+            $(this).css('display','inline-block');
+        });
+
+    });
+</script>
+<script>
+//註冊新員工
+$(document).ready(function () {
+    $('.register_form').on('submit', function (e) {
+        e.preventDefault(); // 防止表單預設提交行為
+
+        // 組裝帳號 email
+        const Account = $('#employee_email_acount').val().trim();
+        const EmployeeEmailAccount = Account + '@@aba-system.com';
+
+        const formData = {
+            Department: $('#department').val(),
+            EmployeeZhName: $('#employee_zh_name').val().trim(),
+            EmployeeFirstName: $('#employee_first_name').val().trim(),
+            EmployeeLastName: $('#employee_last_name').val().trim(),
+            JobTitle: $('#job_title').val().trim(),
+            EmployeeEmailAccount: EmployeeEmailAccount,
+            EmployeePassword: $('#employee_password').val()
+        };
+        console.log(formData)
+        $.ajax({
+            url: '/Home/RegisterEmployee', // 你等一下後端會設這個 endpoint
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function (response) {
+                alert('註冊成功！請重新登入');
+                $('.register_form')[0].reset();
+                $('.register_area').css('display', 'none');
+                $('.session_area').fadeIn(300, function(){
+                    $(this).css('display','block');
+                });
+            },
+            error: function (xhr) {
+                alert('註冊失敗：' + xhr.responseText);
+                console.log(xhr.responseText);
+            }
+        });
+    });
+});
+</script>
+<script>
+//登入操作
+    @* $('.login_btn').off('click').on('click', function () {
+        
+        
+    }); *@
+//登入驗證
+$('.login_form').on('submit', function (e) {
+    e.preventDefault(); // 阻止表單預設提交行為
+
+    const email = $('.account_input').val().trim();
+    const password = $('.password_input').val();
+
+    $.ajax({
+        url: '/Home/LoginEmployee',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ EmployeeEmailAccount: email, EmployeePassword: password }),
+        success: function (res) {
+            alert(res.message);
+            window.location.href = "/"; // 登入成功後導向頁面
+        },
+        error: function (xhr) {
+            if (xhr.status === 401) {
+                $('.login_textbox-2').css('margin-bottom','40px');
+                $('.login_error').css('display','block');
+                $('.login_error').text('帳號或密碼錯誤').show();
+
+            } else {
+                alert('登入失敗，請稍後再試');
+                console.log(xhr);
+            }
+        }
+    });
+});
+</script>
+</html>

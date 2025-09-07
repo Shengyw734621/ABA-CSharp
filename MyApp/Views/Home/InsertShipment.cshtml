@@ -1,0 +1,505 @@
+@{
+    ViewData["Title"] = "新增出貨紀錄";
+}
+
+<style>
+    .navbar{
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        background-color: white; /* 須指定背景，否則會透 */
+    }
+    #content {
+        width: 100%;
+        height: auto;            
+        padding: 100px 200px;   /* 內縮，讓內容離邊界不會太緊 */
+        font-family: "PMingLiU", "新細明體", serif;       
+        box-sizing: border-box; 
+        background-color: #fff; 
+        /* border: 1px solid #000;   */
+        font-size: 18px;       
+    }
+    .header {
+        position: relative; /* logo 會以這個為定位基準 */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        margin-left: 700px;
+        width: 180px;
+        height: auto;
+    }
+
+    .header-container {
+        margin-top: 60px; /* 往下推，避免文字跟 logo 重疊 */
+    }
+
+    .company-name {
+        font-family: "PMingLiU", "新細明體", serif;
+        font-size: 32px;
+        margin: 0; /* 避免額外間距 */
+    }
+    
+    .shipment-title {
+        text-align: center;
+        font-family: "PMingLiU", "新細明體", serif;
+        font-size: 42px;
+        font-weight: normal;
+    }
+
+    .shipment-title .main {
+        letter-spacing: 1.3em;   /* 分散三個字 */
+        margin-right: -1.8em;    /* 把最後一個字的空白補回來 */
+    }
+
+    .shipment-title .sub {
+        font-size: 20px;
+        font-weight: normal;
+        margin-left: 10px;
+    }
+
+    .shipment-title .sub .paren {
+        font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+        font-weight: 800;
+    }
+
+    .shipment-title .sub .text {
+        font-family: "PMingLiU", "新細明體", serif;
+        margin-left: -0.2em;
+        margin-right: -0.2em;
+    }
+    .customer-info {
+        margin-bottom: 20px;
+        margin-left: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px 20px;
+    }
+    .table-container{
+        border: 5px solid #000;
+    }
+    .customer-info p{
+        display: grid;
+        grid-template-columns: 100px 1fr; /* 第一欄固定寬度，第二欄填滿 */
+        align-items: center;
+        margin: 5px 0;
+    }
+    .date-select {
+        display: flex;
+        font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+        align-items: center; /* 垂直置中 */
+    }
+    .customer-info .ContactPerson{
+        letter-spacing: -0.5em;   /* 分散三個字 */
+    }
+    .customer-info .ShipmentNo{
+        margin-left: 110px;
+    }
+    .customer-info input {
+        font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+        border: none;
+        width: 70%;
+    }
+    .shipment-table{
+        width: 99.8%;
+        border-collapse: collapse;
+        margin: 1px;
+    }
+    .shipment-table thead{
+        background-color: #C1DFEB;
+    }
+    .shipment-table th, .shipment-table td {
+        border:1px solid #000; 
+        padding:5px;
+        text-align: center;
+    }
+    .shipment-table .no-cell { 
+        width:60px; text-align:center; 
+    }
+    .shipment-table input {
+        width: 100%;
+        border: none;
+    }
+    tr.major { 
+        background:#fff; 
+    }
+    tr.minor { 
+        background:#fafafa; 
+    }
+    tr.major:hover { 
+        background:#f0f8ff; cursor:pointer; 
+    }
+    tr.active { 
+        background:#dceeff; border-left:3px solid #2a7bd4; 
+    }
+    tr.note-row {
+        background: #fff !important;
+        cursor: default !important;
+    }
+
+    tr.note-row:hover {
+        background: #fff !important;
+    }
+    tr.sign-row{
+        background: #fff !important;
+        cursor: default !important;
+    }
+    tr.sign-row:hover {
+        background: #fff !important;
+    }
+    tr.sign-row td {
+        height: 75px;
+        vertical-align: middle;
+    }
+    tr.sign-row td.person {
+        width: 0.6%;
+        white-space: nowrap; /* 避免自動換行 */
+    }
+    tr.sign-row td.sign{
+        width: 15%;
+    }
+    tr.sign-row input {
+        border: none;
+        width: 100%;/* 輸入框占比可自行調整 */
+    }
+    .signature-table{
+        width: 99.8%;
+        border-collapse: collapse;
+        margin: -1px 1px 1px 1px;
+    }
+    .signature-table tr, .signature-table td{
+        border-top: none;
+        border-right:1px solid #000;
+        border-bottom:1px solid #000;
+        border-left:1px solid #000;
+        padding:6px;
+        text-align: center;
+    }
+    .actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+    button {
+        margin: 5px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 6px;
+        background: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+</style>
+
+<div id="content">
+    <!-- 公司抬頭 -->
+    <div class="header">
+        <img src="/images/logo.png" alt="公司 Logo" class="logo">
+        <div class="header-container">
+            <h2 class="company-name">威森國際股份有限公司</h2>
+        </div>
+        <h1 class="shipment-title">
+            <span class="main">出貨單</span>
+            <span class="sub">
+                <span class="paren">(</span>
+                <span class="text">一式二份</span>
+                <span class="paren">)</span>
+            </span>
+        </h1>
+    </div>
+
+    <!-- 客戶資訊 -->
+    <div class="customer-info">
+        <p></p>
+        <p class="ShipmentNo">出貨單號：<input type="text" name="ShipmentNo" value="CB-001-"/></p>
+        <p class="CustomerName">客　　戶：<input type="text" name="CustomerName" /></p>
+        <p>
+        出貨日期：
+            <span class="date-select">
+                <select id="year"></select>.
+                <select id="month"></select>.
+                <select id="day"></select>
+            </span>
+        </p>
+        <p class="ContactPerson">聯　　絡　　人　：<input type="text" name="ContactPerson" /></p>
+        <p>電　　話：<input type="text" name="Phone" /></p>
+        <p>出貨地址：<input type="text" name="Address"/></p> 
+        <p>傳　　真：<input type="text" name="Fax" /></p>
+    </div>
+
+    <div class="table-container">
+        <!-- 表格 -->
+        <table class="shipment-table">
+            <thead>
+            <tr>
+                <th>NO.</th>
+                <th>類別</th>
+                <th>產品名稱</th>
+                <th>型號/序號</th>
+                <th>數量</th>
+            </tr>
+            </thead>
+            <tbody id="shipmentItems">
+                <!-- 範例第一列為大項 -->
+                <tr class="major">
+                    <td class="no-cell">1</td>
+                    <td><input type="text" name="ProductType" /></td>
+                    <td><input type="text" name="ProductName" class="long-input" /></td>
+                    <td><input type="text" name="ProductSN" /></td>
+                    <td><input type="text" name="Quantity" /></td>
+                </tr>
+
+                <!-- 備註列 -->
+                <tr class="note-row">
+                    <td>備 註</td>
+                    <td colspan="4"><input type="text" name="Note" class="long-input" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="signature-table">
+            <!-- 簽名列 -->
+            <tr class="sign-row">
+                <td class="person">
+                    業 務
+                </td>
+                <td class="sign">
+                    <input type="text" name="SalesSign" />
+                </td>
+                <td class="person">
+                    經 辦
+                </td>
+                <td class="sign">
+                    <select name="HandlerSign" asp-items="@(new SelectList(ViewBag.AdminEmployees, "Value", "Text"))">
+                        <option value="">-- 請選擇 --</option>
+                    </select>
+                </td>
+                <td class="person">
+                    客 戶
+                </td>
+                <td class="sign">
+                    <input type="text" name="CustomerSign" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+
+    <!-- 按鈕 -->
+    <button type="button" id="addMajorBtn">
+        <i class="fa-solid fa-plus"></i>
+        新增大項
+    </button>
+    <button type="button" id="addMinorBtn">
+        <i class="fa-solid fa-plus"></i>
+        新增細項
+    </button>
+    <button type="button" id="deleteRowBtn">
+        <i class="fa-solid fa-trash"></i>
+        刪除項目
+    </button>
+
+    <!-- 送出按鈕 -->
+    <div class="actions">
+        <button type="submit">儲存</button>
+        <button type="button" onclick="history.back()">返回</button>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        // 載入年份 & 月份
+        const yearSelect = document.getElementById("year");
+        const monthSelect = document.getElementById("month");
+        const daySelect = document.getElementById("day");
+
+        const today = new Date();
+        const thisYear = today.getFullYear();
+        const thisMonth = today.getMonth() + 1; // getMonth() 0-11
+        const thisDay = today.getDate();
+
+        for (let y = 2015; y <= thisYear; y++) {
+            let opt = document.createElement("option");
+            opt.value = y;
+            opt.textContent = y;
+            if (y === thisYear) opt.selected = true; // 預設今年
+            yearSelect.appendChild(opt);
+        }
+
+        for (let m = 1; m <= 12; m++) {
+            let opt = document.createElement("option");
+            opt.value = m;
+            opt.textContent = m;
+            if (m === thisMonth) opt.selected = true; // 預設當月
+            monthSelect.appendChild(opt);
+        }
+
+        // 根據年份 & 月份產生日
+        function updateDays() {
+            daySelect.innerHTML = ""; // 先清空
+            let year = parseInt(yearSelect.value);
+            let month = parseInt(monthSelect.value);
+            let daysInMonth = new Date(year, month, 0).getDate();
+            for (let d = 1; d <= daysInMonth; d++) {
+            let opt = document.createElement("option");
+            opt.value = d;
+            opt.textContent = d;
+            if (d === thisDay && year === thisYear && month === thisMonth) {
+                opt.selected = true; // 預設今天
+            }
+            daySelect.appendChild(opt);
+            }
+        }
+
+        yearSelect.addEventListener("change", updateDays);
+        monthSelect.addEventListener("change", updateDays);
+
+        // 初始化呼叫，讓第一次載入就有日期
+        updateDays();
+    </script>
+
+    <script>
+        (function () {
+            const tbody = document.getElementById('shipmentItems');
+            const addMajorBtn = document.getElementById('addMajorBtn');
+            const addMinorBtn = document.getElementById('addMinorBtn');
+            const noteRow = document.querySelector(".note-row"); // 備註列
+            const signRow = document.querySelector(".sign-row"); //簽名列
+
+            // 建立大項列 DOM
+            function createMajorRow() {
+                const tr = document.createElement('tr');
+                tr.className = 'major';
+                tr.innerHTML = `
+                    <td class="no-cell"></td>
+                    <td><input type="text" name="ProductType" /></td>
+                    <td><input type="text" name="ProductName" class="long-input" /></td>
+                    <td><input type="text" name="ProductSN" /></td>
+                    <td><input type="text" name="Quantity" /></td>
+                `;
+                bindRowClick(tr);
+                return tr;
+            }
+
+            // 建立細項列 DOM
+            function createMinorRow() {
+                const tr = document.createElement('tr');
+                tr.className = 'minor';
+                tr.innerHTML = `
+                    <td class="no-cell"></td>
+                    <td><input type="text" name="ProductType" /></td>
+                    <td><input type="text" name="ProductName" class="long-input" /></td>
+                    <td><input type="text" name="ProductSN" /></td>
+                    <td><input type="text" name="Quantity" /></td>
+                `;
+                bindRowClick(tr);
+                return tr;
+            }
+
+            // 綁定點擊行 → 設定 active
+            function bindRowClick(tr) {
+                if (tr.classList.contains("note-row") || tr.classList.contains("sign-row")) return; // 跳過備註列
+                tr.addEventListener('click', function (e) {
+                    if (e.target.tagName.toLowerCase() === 'input') return;
+                    setActiveRow(tr);
+                });
+            }
+
+            // 設定某個 row 為 active（僅一個）
+            function setActiveRow(tr) {
+                const allRows = tbody.querySelectorAll('tr');
+                allRows.forEach(r => r.classList.remove('active'));
+                tr.classList.add('active');
+            }
+
+            // 新增大項
+            addMajorBtn.addEventListener('click', function () {
+                const activeRow = tbody.querySelector('tr.active');
+                const newMajor = createMajorRow();
+
+                if (activeRow && !activeRow.classList.contains("note-row") && !activeRow.classList.contains("sign-row")) {
+                    // 找到插入點（如果 active 是大項，插在它的區塊後面）
+                    let insertAfter = activeRow;
+                    if (activeRow.classList.contains('major')) {
+                        let next = insertAfter.nextElementSibling;
+                        while (next && next.classList.contains('minor')) {
+                            insertAfter = next;
+                            next = insertAfter.nextElementSibling;
+                        }
+                    }
+                    insertAfter.after(newMajor);
+                } else {
+                    // 預設插在備註列之前
+                    tbody.insertBefore(newMajor, noteRow, signRow);
+                }
+
+                refreshMajorNumbers();
+                setActiveRow(newMajor);
+            });
+
+            // 新增細項
+            addMinorBtn.addEventListener('click', function () {
+                const activeRow = tbody.querySelector('tr.active');
+                if (!activeRow || !activeRow.classList.contains('major')) {
+                    alert('請先點選要加入細項的大項');
+                    return;
+                }
+                let insertAfter = activeRow;
+                let next = insertAfter.nextElementSibling;
+                while (next && next.classList.contains('minor')) {
+                    insertAfter = next;
+                    next = insertAfter.nextElementSibling;
+                }
+                const newMinor = createMinorRow();
+                insertAfter.after(newMinor);
+            });
+
+            // 刪除項目
+            document.getElementById("deleteRowBtn").addEventListener("click", function () {
+                const activeRow = document.querySelector("#shipmentItems tr.active");
+                if (!activeRow || activeRow.classList.contains("note-row") || activeRow.classList.contains("sign-row")) {
+                    alert("請先點選要刪除的大項或細項");
+                    return;
+                }
+
+                if (!confirm("確定要刪除這一列嗎？")) return;
+
+                if (activeRow.classList.contains("major")) {
+                    // 刪大項 → 連同細項一起刪
+                    let nextRow = activeRow.nextElementSibling;
+                    while (nextRow && nextRow.classList.contains("minor")) {
+                        const temp = nextRow.nextElementSibling;
+                        nextRow.remove();
+                        nextRow = temp;
+                    }
+                    activeRow.remove();
+                } else {
+                    // 刪細項 → 單獨刪掉
+                    activeRow.remove();
+                }
+
+                refreshMajorNumbers();
+            });
+
+            // 初始化 → 綁定現有 row
+            document.querySelectorAll('#shipmentItems tr').forEach(bindRowClick);
+
+            refreshMajorNumbers();
+        })();
+
+        // 更新大項編號
+        function refreshMajorNumbers() {
+            const rows = document.querySelectorAll("#shipmentItems tr");
+            let majorCount = 1;
+            rows.forEach(row => {
+                if (row.classList.contains("major")) {
+                    row.cells[0].textContent = majorCount++;
+                } else if (row.classList.contains("minor")) {
+                    row.cells[0].textContent = "";
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,53 @@
+@model MyApp.Models.CustomerSelect
+
+<style>
+
+    .customer-table {
+        width: 100%;
+        max-width: 800px;
+        table-layout: fixed;
+        word-wrap: break-word;
+        border-collapse: collapse;
+    }
+    .customer-table th, .customer-table td {
+        padding: 6px 10px;
+        text-align: left;
+        vertical-align: top;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+    .customer-table th {
+        width: 30%;
+        background-color: #f5f5f5;
+    }
+
+</style>
+
+<div class="customer-block">
+    @* <!-- checkbox 區 -->
+    <div class="checkbox">
+        <input type="checkbox" class="delete-checkbox" data-id="@Model.customer_id" />
+    </div> *@
+
+    <table class="customer-table">
+        <tbody>
+            <tr><th>公司名稱</th><td class="customer_name">@Model.CompanyName</td></tr>
+            <tr><th>產業類別</th><td class="customer_type">@Model.IndustryType</td></tr>
+            <tr><th>郵遞區號</th><td class="customer_postal_code">@Model.PostalCode</td></tr>
+            <tr><th>地址</th><td class="customer_address">@Model.Address</td></tr>
+            <tr><th>區域</th><td class="customer_region">@Model.Region</td></tr>
+            <tr><th>縣市</th><td class="customer_county">@Model.County</td></tr>
+            <tr><th>國家</th><td class="customer_country">@Model.Country</td></tr>
+            <tr><th>公司統編</th><td class="customer_taxid">@Model.TaxId</td></tr>
+            <tr><th>Email</th><td class="customer_email">@Model.Email</td></tr>
+            <tr><th>電話號碼</th><td class="customer_phone">@Model.Phone</td></tr>
+            <tr><th>傳真號碼</th><td class="customer_fax">@Model.Fax</td></tr>
+            <tr><th>業務窗口</th><td class="customer_sales">@Model.SalesContact</td></tr>
+            <tr><th>技術窗口</th><td class="customer_technican">@Model.TechnicalContact</td></tr>
+        </tbody>
+    </table>
+
+    @* <div class="deleteRow">
+        <button class="deleteRowBtn" style="width: 90px;">確認刪除</button>
+    </div> *@
+</div>

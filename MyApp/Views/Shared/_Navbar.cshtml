@@ -1,0 +1,207 @@
+<div class="navbar">
+    <div class="container">
+                    
+        <div class="logo_txt">
+            <a href="@Url.Action("Index", "Home")" class="brand ajax-link">
+                <h1>威森國際股份有限公司</h1>
+            </a>
+            @Html.ActionLink("威森國際股份有限公司", "Index", "Home", null, new { @class = "logo_txt_link" })
+                        
+        </div>
+        @Html.ActionLink("技術部資訊系統", "Index", "Home", null, new { @class = "navbar_title" })
+                    
+        <div id="div_menu">
+            <ul id="MenuBar1" class="MenuBarHorizontal">
+                <li>
+                    @Html.ActionLink("最新消息", "News", "Home", new { @class = "news" })
+                </li>
+                <li>
+                    <a href="">顧客資訊</a>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("客戶資料", "Customer", "Home", new { @class = "customer" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("供應商資料", "Supplier", "Home", new { @class = "supplier" })
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#!">服務紀錄</a>
+                    <ul>
+                        <li>
+                            @Html.ActionLink("產品出貨紀錄", "Shipment", "Home", new { @class = "shipment" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("產品維修紀錄", "Maintenance", "Home", new { @class = "maintenance" })
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">技術資訊</a>
+                    <ul>
+                        <li style="width: 155px;">
+                            @Html.ActionLink("專案進度", "Project", "Home", new { @class = "project" })
+                        </li>
+                        <li style="width: 155px;">
+                            @Html.ActionLink("Universal Robots", "UR", "Home", new { @class = "UR" })
+                        </li>
+                        <li style="width: 155px;">
+                            @Html.ActionLink("UR Plus", "URPlus", "Home", new { @class = "URPlus" })
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink("關於技術部", "About", "Home", new { @class = "about" })
+                </li>
+            </ul>
+        </div>
+        @{
+            var employeeName = Context.Session.GetString("EmployeeName");
+        }   
+        <div class="login">
+            @if (!string.IsNullOrEmpty(employeeName))
+            {
+                <a href="@Url.Action("Profile", "Employee")" class="login_link">@employeeName</a>
+            }
+            else
+            {
+                <a href="#!" class="login_link" id="loginBtn">登入</a>
+            }
+        </div>
+        <div class="search_box">
+            <a href="#!" class="search_link">
+                <img src="@Url.Content("~/statics/search_icon.svg")" class="search_icon" />
+            </a>
+        </div>
+        <ul class="popup_menu">
+            <li class="popup_item_L1">
+                <a href="#!" class="popup_item_link_L1 item1">最新消息</a>
+            </li>
+            <li class="popup_item_L1">
+                <a href="#!" class="popup_item_link_L1 item2">顧客資訊</a>
+            </li>
+            <li class="popup_item_L1">
+                <a href="#!" class="popup_item_link_L1 item3">服務紀錄</a>
+            </li>
+            <li class="popup_item_L1">
+                <a href="#!" class="popup_item_link_L1 item4">技術資訊</a>
+            </li>
+            <li class="popup_item_L1">
+                <a href="#!" class="popup_item_link_L1 item5">關於技術部</a>
+            </li>
+            <a href="#!" class="popup_close_btn">
+                <span></span>
+                <span></span>
+            </a>
+            <a href="#!" class="popup_lastpage_btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </ul>
+        <a href="#!" class="menu_toggle">
+            <span class="hamburger_icon1"></span>
+            <span class="hamburger_icon2"></span>
+            <span class="hamburger_icon3"></span>
+        </a>
+        <section class="session_mask">
+            <section class="session_area">
+                <div class="search_message_box">
+                    <a href="#!" class="close_btn">
+                        <div class="close_btn_icon"></div>
+                    </a>
+                </div>
+                <form action="#!" class="search_form">
+                    <ul class="search_label">
+                        <li class="search_textbox">
+                            <input type="search" name="search" class="search_input" placeholder="請輸入關鍵字搜尋...">
+                        </li>
+                        <li class="search_btn">
+                            <input type="submit" value="搜尋" class="search_btn_decoration">
+                        </li>
+                    </ul>
+                </form>
+                <form action="#!" class="login_form">
+                    <div class="login_title">員工登入</div>
+                    <li class="login_textbox-1">帳號
+                        <input type="text" class="account_input" required>
+                        
+                    </li>
+                    <li class="login_textbox-2">密碼
+                        <input type="password" class="password_input" required>
+                        <div class="login_error"></div>
+                    </li>
+                    <div class="login_submit_area">
+                        <a href="#!" class="register_account">
+                            註冊新員工帳號
+                        </a>
+                        <li class="login_btn">
+                            <input type="submit" value="登入" class="login_btn_decoration">
+                        </li>
+                        <a href="#!" class="reset_password">
+                            忘記密碼
+                        </a>
+                    </div>
+                    
+                </form>                          
+            </section>
+            <section class="register_area">
+                <a href="#!" class="close_btn">
+                    <div class="close_btn_icon"></div>
+                </a>
+                <form action="#!" class="register_form">
+                    <div class="register_title">註冊新員工帳號</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>部門</label>
+                            <select id="department" name="Department" required>
+                                <option value="">請選擇</option>
+                                <option value="營業部">營業部</option>
+                                <option value="行政部">行政部</option>
+                                <option value="技術部">技術部</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>姓名</label>
+                            <input type="text" id="employee_zh_name" name="EmployeeZhName" required />
+                        </div>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="employee_first_name" name="EmployeeFirstName" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="employee_last_name" name="EmployeeLastName" required />
+                        </div>
+                        <div class="form-group">
+                            <label>職位</label>
+                            <input type="text" id="job_title" name="JobTitle" required />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>帳號</label>
+                            <div class="email_block" style="display: flex;">
+                                <input type="text" id="employee_email_acount" name="EmployeeEmailAccount" required />
+                                <div class="email_tag" style="justify-self: center; margin-top: 5px; margin-left: 5px;">@@aba-system.com</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>密碼</label>
+                            <input type="password" id="employee_password" name="EmployeePassword" required />
+                        </div>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit">送出</button>
+                    </div>
+                </form>
+            </section>
+        </section>
+    </div>
+</div>

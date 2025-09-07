@@ -1,0 +1,653 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\MyApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\MyApp.1r7hprqm2a.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\css\\normalize.css",
+      "PackagePath": "staticwebassets\\css\\normalize.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\css\\scss\\style.scss",
+      "PackagePath": "staticwebassets\\css\\scss\\style.scss"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\css\\style.css.map",
+      "PackagePath": "staticwebassets\\css\\style.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\SpryAssets\\SpryMenuBar.js",
+      "PackagePath": "staticwebassets\\js\\SpryAssets\\SpryMenuBar.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\SpryAssets\\SpryMenuBarDown.gif",
+      "PackagePath": "staticwebassets\\js\\SpryAssets\\SpryMenuBarDown.gif"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\SpryAssets\\SpryMenuBarDownHover.gif",
+      "PackagePath": "staticwebassets\\js\\SpryAssets\\SpryMenuBarDownHover.gif"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\SpryAssets\\SpryMenuBarHorizontal.css",
+      "PackagePath": "staticwebassets\\js\\SpryAssets\\SpryMenuBarHorizontal.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\SpryAssets\\SpryMenuBarRight.gif",
+      "PackagePath": "staticwebassets\\js\\SpryAssets\\SpryMenuBarRight.gif"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\SpryAssets\\SpryValidationTextField.css",
+      "PackagePath": "staticwebassets\\js\\SpryAssets\\SpryValidationTextField.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\SpryAssets\\SpryValidationTextField.js",
+      "PackagePath": "staticwebassets\\js\\SpryAssets\\SpryValidationTextField.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\login\\login.js",
+      "PackagePath": "staticwebassets\\js\\login\\login.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\menu toggle\\menu_toggle.js",
+      "PackagePath": "staticwebassets\\js\\menu toggle\\menu_toggle.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\router\\router.js",
+      "PackagePath": "staticwebassets\\js\\router\\router.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\.eslintrc.json",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\.eslintrc.json"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\.gitattributes",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\.gitattributes"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\.gitignore",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\.gitignore"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\.travis.yml",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\.travis.yml"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\CHANGELOG.md",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\CHANGELOG.md"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\README.md",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\README.md"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\build\\rollup.conf.banner.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\build\\rollup.conf.banner.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\build\\rollup.conf.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\build\\rollup.conf.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\build\\rollup.conf.min.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\build\\rollup.conf.min.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\dist\\scrollreveal.es.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\dist\\scrollreveal.es.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\dist\\scrollreveal.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\dist\\scrollreveal.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\dist\\scrollreveal.min.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\dist\\scrollreveal.min.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\package.json",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\package.json"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\index.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\index.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\constructor.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\constructor.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\defaults.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\defaults.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\animate.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\animate.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\delegate.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\delegate.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\initialize.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\initialize.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\rinse.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\rinse.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\sequence.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\sequence.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\style.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\functions\\style.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\methods\\clean.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\methods\\clean.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\methods\\destroy.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\methods\\destroy.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\methods\\reveal.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\methods\\reveal.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\methods\\sync.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\methods\\sync.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\mount.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\instance\\mount.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\polyfills\\math-sign.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\polyfills\\math-sign.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\deep-assign.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\deep-assign.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\each.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\each.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\get-geometry.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\get-geometry.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\get-prefixed-css-prop.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\get-prefixed-css-prop.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\get-scrolled.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\get-scrolled.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-element-visible.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-element-visible.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-mobile.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-mobile.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-object.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-object.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-transform-supported.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-transform-supported.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-transition-supported.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\is-transition-supported.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\logger.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\logger.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\next-unique-id.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\src\\utils\\next-unique-id.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\instance\\constructor.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\instance\\constructor.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\karma.conf.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\karma.conf.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\polyfills\\math-sign.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\polyfills\\math-sign.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\sauce.conf.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\sauce.conf.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\timeout.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\timeout.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\deep-assign.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\deep-assign.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\each.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\each.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\get-prefixed-css-prop.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\get-prefixed-css-prop.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\is-mobile.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\is-mobile.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\is-object.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\is-object.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\is-transform-supported.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\is-transform-supported.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\is-transition-supported.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\is-transition-supported.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\logger.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\logger.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\next-unique-id.spec.js",
+      "PackagePath": "staticwebassets\\js\\scrollreveal\\scrollreveal-master\\scrollreveal-master\\test\\utils\\next-unique-id.spec.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\js\\search icon\\search_icon.js",
+      "PackagePath": "staticwebassets\\js\\search icon\\search_icon.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\.gitignore",
+      "PackagePath": "staticwebassets\\npm\\aba\\.gitignore"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\README.md",
+      "PackagePath": "staticwebassets\\npm\\aba\\README.md"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\package-lock.json",
+      "PackagePath": "staticwebassets\\npm\\aba\\package-lock.json"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\package.json",
+      "PackagePath": "staticwebassets\\npm\\aba\\package.json"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\public\\favicon.ico",
+      "PackagePath": "staticwebassets\\npm\\aba\\public\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\public\\index.html",
+      "PackagePath": "staticwebassets\\npm\\aba\\public\\index.html"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\public\\logo192.png",
+      "PackagePath": "staticwebassets\\npm\\aba\\public\\logo192.png"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\public\\logo512.png",
+      "PackagePath": "staticwebassets\\npm\\aba\\public\\logo512.png"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\public\\manifest.json",
+      "PackagePath": "staticwebassets\\npm\\aba\\public\\manifest.json"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\public\\robots.txt",
+      "PackagePath": "staticwebassets\\npm\\aba\\public\\robots.txt"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\src\\App.css",
+      "PackagePath": "staticwebassets\\npm\\aba\\src\\App.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\src\\App.js",
+      "PackagePath": "staticwebassets\\npm\\aba\\src\\App.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\src\\App.test.js",
+      "PackagePath": "staticwebassets\\npm\\aba\\src\\App.test.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\src\\index.css",
+      "PackagePath": "staticwebassets\\npm\\aba\\src\\index.css"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\src\\index.js",
+      "PackagePath": "staticwebassets\\npm\\aba\\src\\index.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\src\\logo.svg",
+      "PackagePath": "staticwebassets\\npm\\aba\\src\\logo.svg"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\src\\reportWebVitals.js",
+      "PackagePath": "staticwebassets\\npm\\aba\\src\\reportWebVitals.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\aba\\src\\setupTests.js",
+      "PackagePath": "staticwebassets\\npm\\aba\\src\\setupTests.js"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\package-lock.json",
+      "PackagePath": "staticwebassets\\npm\\package-lock.json"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\npm\\package.json",
+      "PackagePath": "staticwebassets\\npm\\package.json"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\settings\\account password.txt",
+      "PackagePath": "staticwebassets\\settings\\account password.txt"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\statics\\UR_background.jpg",
+      "PackagePath": "staticwebassets\\statics\\UR_background.jpg"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\statics\\aba-icon-192x192.png",
+      "PackagePath": "staticwebassets\\statics\\aba-icon-192x192.png"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\statics\\aba_logo.jpg",
+      "PackagePath": "staticwebassets\\statics\\aba_logo.jpg"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\statics\\aba_logo.svg",
+      "PackagePath": "staticwebassets\\statics\\aba_logo.svg"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\statics\\aba_logo_for_copyright.svg",
+      "PackagePath": "staticwebassets\\statics\\aba_logo_for_copyright.svg"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\statics\\footer_about.jpg",
+      "PackagePath": "staticwebassets\\statics\\footer_about.jpg"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\statics\\hiden.svg",
+      "PackagePath": "staticwebassets\\statics\\hiden.svg"
+    },
+    {
+      "Id": "D:\\Course\\Side Project\\ABA-Csharp\\MyApp\\wwwroot\\statics\\search_icon.svg",
+      "PackagePath": "staticwebassets\\statics\\search_icon.svg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MyApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.MyApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.MyApp.props",
+      "PackagePath": "build\\MyApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.MyApp.props",
+      "PackagePath": "buildMultiTargeting\\MyApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.MyApp.props",
+      "PackagePath": "buildTransitive\\MyApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,700 @@
+@{
+    ViewData["Title"] = "客戶資料";
+}
+
+<style>
+    .navbar{
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        background-color: white; /* 須指定背景，否則會透 */
+    }
+    #content {
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+        background-color: #fff;
+        font-size: 18px;
+    }
+    .master-detail-layout {
+        display: flex;
+        height: calc(100vh - 40px); /* 讓 layout 占滿視窗高度（40px 是 padding 空間可調整） */
+        overflow: hidden; /* 阻止整體滾動 */
+        gap: 20px;
+        padding: 20px;
+    }
+    /* 左邊 master 區域 */
+    .master-panel {
+        flex: 1;
+        border-right: 1px solid #ccc;
+        padding-right: 20px;
+        overflow-y: auto;
+    }
+
+    /* 右邊 detail 區域 */
+    .detail-panel {
+        flex: 1;
+        padding-left: 20px;
+        position: sticky;
+        top: 20px; /* 距離視窗頂部距離 */
+        align-self: flex-start;
+        height: fit-content; /* 不強制撐滿，否則 sticky 失效 */
+    }
+
+    .customer-summary-block {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .customer-summary-block.active {
+        background-color: #d0e7ff; /* 更明顯的藍色 */
+        border-color: #4a90e2;     /* 更深的邊框色 */
+    }
+
+    .customer-summary-block div {
+        margin: 3px 0;
+        font-size: 15px;
+    }
+
+    .customer-summary-block:hover {
+        background-color: #e8f1fb; /* 淡藍色背景 */
+        border-color: #89b3e5;     /* 淡藍邊框 */
+        cursor: pointer;
+    }
+
+
+    .crud-bar{
+        position: sticky;
+        top: 80px; /* 根據 navbar 的高度調整 */
+        z-index: 199;
+        background-color: white;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+    .crud-bar input{
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .crud-bar select{
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .crud-bar button{
+        padding: 7.5px 25px;
+        font-size: 16px;
+        background-color: white;
+        color: #000;
+        border: 1px solid #ccc; /* 輕微邊框 */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);/* 立體感 */
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 500ms;
+    }
+    .crud-bar button:hover{
+        background-color: #ccc;
+    }
+    .insert_session_mask {
+        background: rgba(0, 0, 0, 0.85);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 998;
+    }
+    .insert_session_mask .insert_session_area{
+        width: 650px;
+        height: auto;
+        float: left;
+        background-color: #fff;
+        position: relative;
+        margin: 30px auto;
+        padding: 20px;
+        z-index: 999;
+        border-radius: 5px;
+    }
+    .insert_session_mask .insert_session_area .close_btn{
+        background-color: transparent;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 25px;
+        height: 25px;
+        z-index: 1000;
+    }
+    .insert_session_mask .insert_session_area .close_btn .close_btn_icon{
+        width: 100%;
+        height: 100%;
+        background-image: url("/statics/hiden.svg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    .insert_title{
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 20px;
+        margin-bottom: 20px;
+        justify-content: space-between;
+    }
+
+    .form-group {
+        flex: 1 1 calc(20% - 20px); /* 每欄約佔20%寬度，5欄一排 */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-group input {
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-group select {
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .form-submit {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .form-submit button {
+        padding: 10px 25px;
+        font-size: 18px;
+        background-color: #4285f4;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .form-submit button:hover {
+        background-color: #3367d6;
+    }
+    .customer-block{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .customer-block .checkbox{
+        display: none;
+        margin: 10px;
+    }
+    .customer-block .customer-table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+
+    .customer-block .customer-table th {
+        background-color: #f2f2f2;
+        text-align: left;
+        width: 20%;
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .customer-block .customer-table td {
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    .customer-block .deleteRow{
+        display: none;
+        margin: 10px;
+    }
+
+    .no-result {
+        text-align: center;
+        color: #888;
+        padding: 20px;
+        font-style: italic;
+    }
+
+    .customer-count {
+        margin-left: 12px;
+        color: #666;
+        font-size: 14px;
+    }
+</style>
+
+<div id="content">
+
+    <div class="crud-bar">
+        <input id="search_name" type="text" placeholder="輸入公司名稱">
+        <select id="search_type">
+            <option value="">產業類別</option>
+            <option value="系統整合商">系統整合商</option>
+            <option value="電子材料製造業">電子材料製造業</option>
+            <option value="塑膠製造業">塑膠製造業</option>
+            <option value="金屬加工業">金屬加工業</option>
+            <option value="食品加工業">食品加工業</option>
+            <option value="學術研究單位">學術研究單位</option>
+            <option value="其他">其他</option>
+        </select>    
+        <select id="search_county">
+            <option value="">縣市</option>
+            <option value="台北市">台北市</option>
+            <option value="新北市">新北市</option>
+            <option value="桃園市">桃園市</option>
+            <option value="新竹縣">新竹縣</option>
+            <option value="新竹市">新竹市</option>
+            <option value="苗栗縣">苗栗縣</option>
+            <option value="台中市">台中市</option>
+            <option value="彰化縣">彰化縣</option>
+            <option value="南投縣">南投縣</option>
+            <option value="雲林縣">雲林縣</option>
+            <option value="嘉義縣">嘉義縣</option>
+            <option value="嘉義市">嘉義市</option>
+            <option value="台南市">台南市</option>
+            <option value="高雄市">高雄市</option>
+            <option value="屏東縣">屏東縣</option>
+            <option value="宜蘭縣">宜蘭縣</option>
+            <option value="花蓮縣">花蓮縣</option>
+            <option value="台東縣">台東縣</option>
+            <option value="澎湖縣">澎湖縣</option>
+            <option value="金門縣">金門縣</option>
+            <option value="連江縣">連江縣</option>
+        </select>
+            
+        <button id="loadCustomersBtn">
+            <i class="fa-solid fa-eye"></i>
+            瀏覽
+        </button>
+        <button id="insertCustomersBtn">
+            <i class="fa-solid fa-plus"></i>
+            新增
+        </button>
+        <button id="updateCustomersBtn">
+            <i class="fa-solid fa-pen"></i>
+            編輯
+        </button>
+        <button id="deleteCustomersBtn">
+            <i class="fa-solid fa-trash"></i>
+            刪除
+        </button>
+        <!-- 新增顯示總筆數的區塊 -->
+        <span id="customerCount" class="customer-count">
+            客戶資料 共 0 筆
+        </span>
+    </div>
+    <div class="master-detail-layout">
+
+        <div class="master-panel">
+            <div id="customerMaster">
+                <!-- 點選某筆資料後，這裡顯示詳細資料 -->
+                @* <p>請點選客戶以查看詳細資料</p> *@
+            </div>
+        </div>
+        <div class="detail-panel">
+            <!-- 顯示客戶資料table -->
+            <div id="customerContainer">
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+<!-- 遮罩 -->
+<div class="insert_session_mask">
+    <section class="insert_session_area">
+        <a href="#!" class="close_btn">
+            <div class="close_btn_icon"></div>
+        </a>
+        <form action="#!" class="insert_form">
+            <div class="insert_title">新增客戶資料</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>產業類別</label>
+                    <select id="customer_type" name="產業類別" required>
+                        <option value="">請選擇</option>
+                        <option value="系統整合商">系統整合商</option>
+                        <option value="電子材料製造業">電子材料製造業</option>
+                        <option value="塑膠製造業">塑膠製造業</option>
+                        <option value="金屬加工業">金屬加工業</option>
+                        <option value="食品加工業">食品加工業</option>
+                        <option value="學術研究單位">學術研究單位</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>公司名稱</label>
+                    <input type="text" id="customer_name" name="CustomerName" required />
+                </div>
+                <div class="form-group">
+                    <label>郵遞區號</label>
+                    <input type="text" id="customer_postal_code" name="CustomerPostalCode" required />
+                </div>
+                <div class="form-group">
+                    <label>區域</label>
+                    <input type="text" id="customer_region" name="CustomerRegion" required />
+                </div>
+                <div class="form-group">
+                    <label>地址</label>
+                    <input type="text" id="customer_address" name="CustomerAddress" required />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>縣市</label>
+                    <input type="text" id="customer_county" name="CustomerCounty" required />
+                </div>
+                <div class="form-group">
+                    <label>國家</label>
+                    <input type="text" id="customer_country" name="CustomerCountry" required />
+                </div>
+                <div class="form-group">
+                    <label>公司統編</label>
+                    <input type="text" id="customer_taxid" name="公司統編" required />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="customer_email" name="Email" />
+                </div>
+                <div class="form-group">
+                    <label>電話號碼</label>
+                    <input type="text" id="customer_phone" name="CustomerPhone" required />
+                </div>
+                <div class="form-group">
+                    <label>傳真號碼</label>
+                    <input type="text" id="customer_fax" name="CustomerFax" />
+                </div>
+                <div class="form-group">
+                    <label>業務窗口</label>
+                    <input type="text" id="customer_sales" name="CustomerSales" required />
+                </div>
+                <div class="form-group">
+                    <label>技術窗口</label>
+                    <input type="text" id="customer_technicant" name="CustomerTechnicant" />
+                </div>
+            </div>
+
+            <div class="form-submit">
+                <button type="submit">送出</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //─ 封裝一個共用函式 ─//
+        @* function loadCustomers() {
+            $.get('/Home/GetCustomers', function (data) {
+                $('#customerContainer').html(data);
+                renderCustomerSummary(); // 這裡呼叫自動整理 summary
+            });
+        } *@
+
+        //抓取客戶資料部分資訊顯示在detail區
+        function loadCustomerSummaries() {
+            $.get('/Home/GetCustomerSummaries', function (data) {
+                // 確認你拿到的是一個 JSON 陣列
+                console.log("載入 summaries:", data);
+
+                const summaryList = data.map(c => {
+                console.log("每筆客戶：", c); // 加這行 debug
+                return`
+                    <div class="customer-summary-block" data-id="${c.id}">
+                        <div class="company-name"><h3>${c.companyName}</h3></div>
+                        <div class="location"><i class="fa-solid fa-location-dot"></i> ${c.county}${c.region}</div>
+                        <div class="industry"><i class="fa-solid fa-industry"></i> ${c.industryType}</div>
+                    </div>
+                `;
+                });
+
+                $("#customerMaster").html(summaryList.join(""));
+
+                // 點 summary -> 載入該筆詳細
+                $(".customer-summary-block").on("click", function () {
+                    const id = $(this).data("id");
+                    console.log("點到的 ID:", id); // ← 看看是不是 undefined
+
+                     // 移除其他 .active，加在自己這筆
+                    $(".customer-summary-block").removeClass("active");
+                    $(this).addClass("active");
+
+                    loadCustomerDetail(id);
+                });
+            });
+        }
+
+        function loadCustomerDetail(id) {
+             console.log("要載入 detail，id:", id); // 確認有進來、id 是對的
+            $.get('/Home/GetCustomerDetail', { id }, function (html) {
+                $('#customerContainer').html(html);
+            });
+        }
+
+
+
+        $(document).ready(function () {
+            loadCustomerSummaries();
+        });
+
+        // 2. 若仍保留按鈕手動重載
+        @* $('#loadCustomersBtn').on('click', loadCustomers); *@
+    </script>
+    <script>
+        @* 條件查詢(瀏覽) *@
+        // 綁定瀏覽按鈕
+        $('#loadCustomersBtn').on('click', function () {
+            const filters = {
+                name: $('#search_name').val(),
+                type: $('#search_type').val(),
+                county: $('#search_county').val()
+            };
+            loadCustomerSummaries(filters);
+        });
+
+        function loadCustomerSummaries(filters = {}) {
+            $.get('/Home/GetCustomerSummaries', filters, function (data) {
+                // 清空右邊細項
+                $("#customerContainer").empty();
+                
+
+                // 更新筆數顯示
+                $("#customerCount").text(`客戶資料 共 ${data.length} 筆`);
+
+                if (!data || data.length === 0) {
+                    $("#customerMaster").html(`
+                        <div class="no-result">
+                            <p>查無結果</p>
+                        </div>
+                    `);
+                    return;
+                }
+
+                const summaryList = data.map(c => `
+                    <div class="customer-summary-block" data-id="${c.id}">
+                        <div class="company-name"><h3>${c.companyName}</h3></div>
+                        <div class="location"><i class="fa-solid fa-location-dot"></i> ${c.county}${c.region}</div>
+                        <div class="industry"><i class="fa-solid fa-industry"></i> ${c.industryType}</div>
+                    </div>
+                `);
+
+                $("#customerMaster").html(summaryList.join(""));
+
+                $(".customer-summary-block").on("click", function () {
+                    const id = $(this).data("id");
+                    $(".customer-summary-block").removeClass("active");
+                    $(this).addClass("active");
+                    loadCustomerDetail(id);
+                });
+            });
+        }
+
+        
+    </script>
+
+    <script>
+        @* 新增/修改狀態判斷式 *@
+        let isUpdateMode = false; // 預設是新增模式
+
+        // 按下新增按鈕
+        $('#insertCustomersBtn').off('click').on('click', function () {
+            isUpdateMode = false; // ← 新增模式強制設回 false
+            $('.insert_form')[0].reset(); // ← 清空表單
+            $('.insert_title').text('新增客戶資料');
+            $('.insert_session_mask').fadeIn(300);
+            $('.insert_session_mask').css('display', 'flex'); // 顯示遮罩
+        });
+        $('.close_btn').off('click').on('click', function() {
+            $('.insert_session_mask').fadeOut(300, function() {
+                $(this).css('display', 'none');
+            });
+        }); 
+
+        // 按下修改資料按鈕
+        $('#updateCustomersBtn').off('click').on('click', function () {
+
+            // 找出目前有 active 的那個客戶區塊
+            const activeBlock = $('.customer-summary-block.active');
+
+            // 沒有選擇任何一筆
+            if (activeBlock.length === 0) {
+                alert('請先點選一筆客戶資料');
+                return;
+            }
+
+            const customer_id = activeBlock.data('id'); // 從 .customer-summary-block 抓 data-id
+            isUpdateMode = true;// 修改模式
+
+            // 抓出被選中的 ID（來自 data-id）
+            
+
+             $.get('/Home/GetCustomerById', { id: customer_id })
+
+            
+
+                .done(function (data) {
+
+                    console.log("AJAX 取得資料：", data); // ← 先看這個有沒有正確資料
+                    // 填入資料
+                    $('#customer_name').val(data.companyName);
+                    $('#customer_type').val(data.industryType);
+                    $('#customer_postal_code').val(data.postalCode);
+                    $('#customer_address').val(data.address);
+                    $('#customer_region').val(data.region);
+                    $('#customer_county').val(data.county);
+                    $('#customer_country').val(data.country);
+                    $('#customer_taxid').val(data.taxId);
+                    $('#customer_email').val(data.email);
+                    $('#customer_phone').val(data.phone);
+                    $('#customer_fax').val(data.fax);
+                    $('#customer_sales').val(data.salesContact);
+                    $('#customer_technicant').val(data.technicalContact);
+
+                    $('.insert_title').text('修改客戶資料');
+                    $('.insert_session_mask').css('display', 'flex').hide().fadeIn(300);
+                })
+                .fail(function (xhr, status, error) {
+                    console.error("錯誤訊息：", error);
+                    console.log("回傳內容：", xhr.responseText);
+                    alert("載入資料失敗，請查看 Console 錯誤訊息");
+                });
+
+            $('.close_btn').off('click').on('click', function () {
+                $('.insert_session_mask').fadeOut(300, function () {
+                    $(this).css('display', 'none');
+                });
+            });
+
+        });
+        
+
+        // 統一處理表單送出
+        $('.insert_form').off('submit').on('submit', function (e) {
+            e.preventDefault(); // 阻止表單預設送出行為
+
+            // 組成 JSON 物件
+            const customerData = {
+                
+                CustomerType: $('#customer_type').val(),
+                CustomerName: $('#customer_name').val(),
+                CustomerPostalCode: $('#customer_postal_code').val(),
+                CustomerAddress: $('#customer_address').val(),
+                CustomerRegion: $('#customer_region').val(),
+                CustomerCounty: $('#customer_county').val(),
+                CustomerCountry: $('#customer_country').val(),
+                CustomerTaxID: $('#customer_taxid').val(),
+                CustomerEmail: $('#customer_email').val(),
+                CustomerPhone: $('#customer_phone').val(),
+                CustomerFax: $('#customer_fax').val(),
+                CustomerSales: $('#customer_sales').val(),
+                CustomerTechnicant: $('#customer_technicant').val()
+            };
+
+            
+                    
+            if (isUpdateMode) {
+                const activeBlock = $('.customer-summary-block.active');
+                const customer_id = activeBlock.data('id'); // ← 用 active 的區塊抓 ID
+                customerData.id = customer_id; // 確保跟後端 model 對應欄位名稱一致
+            }
+
+            const url = isUpdateMode ? '/Home/UpdateCustomer' : '/Home/InsertCustomer'; //選擇器
+
+            
+            $.ajax({
+                type: 'POST',
+                url: url, // → 指向後端 Controller 方法
+                data: JSON.stringify(customerData),
+                contentType: 'application/json',
+                success: function (response) {
+                    alert(isUpdateMode ? '修改成功！' : '新增成功！');
+                    $('.insert_form')[0].reset();
+                    $('.insert_session_mask').fadeOut(300);
+
+                    const updatedId = isUpdateMode ? customerData.id : response.id;
+
+                    // 重新載入左邊列表（master）
+                    loadCustomerSummaries();
+
+                    // 同時刷新右邊 detail（如果是新增，會顯示剛新增的資料）
+                    loadCustomerDetail(updatedId);
+
+                    isUpdateMode = false; // 重置狀態
+                },
+                error: function () {
+                    alert(isUpdateMode ? '修改失敗，請檢查欄位或伺服器。' : '新增失敗，請檢查欄位或伺服器。');
+                }
+            });
+        });
+        
+    </script>
+    <script>
+        @* 刪除客戶資料 *@
+        $('#deleteCustomersBtn').off('click').on('click', function () {
+
+            // 找出目前有 active 的那個客戶區塊
+            const activeBlock = $('.customer-summary-block.active');
+
+            // 沒有選擇任何一筆
+            if (activeBlock.length === 0) {
+                alert('請先點選一筆客戶資料');
+                return;
+            }
+
+            // 抓出被選中的 ID（來自 data-id）
+            const customerId = activeBlock.data('id');
+ 
+                if (confirm('確定要刪除這筆客戶資料嗎？')) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Home/DeleteCustomer',
+                        data: JSON.stringify({ id: customerId }),
+                        contentType: 'application/json',
+                        success: function () {
+
+                            alert('刪除成功');
+
+                            $(document).ready(function () {
+                                loadCustomerSummaries();
+                            });
+
+                            $('html, body').animate({ scrollTop: 0 }, 'slow');
+                            // 清空右邊 detail
+                            $('#customerContainer').empty();
+                        },
+                        error: function () {
+                            alert('刪除失敗，請稍後再試');
+                        }
+                    });
+                }
+        });
+    </script>
+}

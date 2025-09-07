@@ -1,0 +1,141 @@
+@{
+    ViewData["Title"] = "產品出貨紀錄";
+}
+
+<style>
+    .navbar{
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        background-color: white; /* 須指定背景，否則會透 */
+    }
+    #content {
+        width: 100%;
+        height: 200vh;
+        box-sizing: border-box;
+        background-color: #fff;
+        font-size: 18px;      
+    }
+    .crud-bar{
+        position: sticky;
+        top: 80px; /* 根據 navbar 的高度調整 */
+        z-index: 199;
+        background-color: white;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+    }
+    .crud-bar input{
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .crud-bar select{
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .crud-bar button{
+        padding: 7.5px 25px;
+        font-size: 16px;
+        background-color: white;
+        color: #000;
+        border: 1px solid #ccc; /* 輕微邊框 */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);/* 立體感 */
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 500ms;
+    }
+    .crud-bar button:hover{
+        background-color: #ccc;
+    }
+    .shipment-count {
+        margin-left: 12px;
+        color: #666;
+        font-size: 14px;
+    }    
+</style>
+
+<div id="content">
+    <div class="crud-bar">
+        <input id="search_name" type="text" placeholder="輸入公司名稱">
+        <select id="search_year"></select>   
+        <select id="search_county">
+            <option value="">縣市</option>
+            <option value="台北市">台北市</option>
+            <option value="新北市">新北市</option>
+            <option value="桃園市">桃園市</option>
+            <option value="新竹縣">新竹縣</option>
+            <option value="新竹市">新竹市</option>
+            <option value="苗栗縣">苗栗縣</option>
+            <option value="台中市">台中市</option>
+            <option value="彰化縣">彰化縣</option>
+            <option value="南投縣">南投縣</option>
+            <option value="雲林縣">雲林縣</option>
+            <option value="嘉義縣">嘉義縣</option>
+            <option value="嘉義市">嘉義市</option>
+            <option value="台南市">台南市</option>
+            <option value="高雄市">高雄市</option>
+            <option value="屏東縣">屏東縣</option>
+            <option value="宜蘭縣">宜蘭縣</option>
+            <option value="花蓮縣">花蓮縣</option>
+            <option value="台東縣">台東縣</option>
+            <option value="澎湖縣">澎湖縣</option>
+            <option value="金門縣">金門縣</option>
+            <option value="連江縣">連江縣</option>
+        </select>
+            
+        <button id="SelectBtn">
+            <i class="fa-solid fa-eye"></i>
+            瀏覽
+        </button>
+        <button id="InsertBtn">
+            <i class="fa-solid fa-plus"></i>
+            新增
+        </button>
+        <button id="UpdateBtn">
+            <i class="fa-solid fa-pen"></i>
+            編輯
+        </button>
+        <button id="DeleteBtn">
+            <i class="fa-solid fa-trash"></i>
+            刪除
+        </button>
+        <!-- 新增顯示總筆數的區塊 -->
+        <span id="ShipmentCount" class="shipment-count">
+            出貨紀錄 共 0 筆
+        </span>
+    </div>
+</div>
+
+@section Scripts{
+    @* 年份下拉選單自動抓DateTime *@
+    <script>
+        // 動態產生年份選單
+        const yearSelect = document.getElementById("search_year");
+        const currentYear = new Date().getFullYear();
+        const startYear = 2015;
+
+        // 先加一個預設選項
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = "選擇年份";
+        yearSelect.appendChild(defaultOption);
+
+        // 從現在往前加到 2015
+        for (let y = currentYear; y >= startYear; y--) {
+            const option = document.createElement("option");
+            option.value = y;
+            option.textContent = y;
+            yearSelect.appendChild(option);
+        }
+    </script>
+    @* 連結到新增出貨紀錄頁面 *@
+    <script>
+        document.getElementById("InsertBtn").addEventListener("click", function () {
+            window.location.href = "/Home/InsertShipment"; 
+        });
+    </script>
+}
