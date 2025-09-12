@@ -140,7 +140,7 @@
         background:#f0f8ff; cursor:pointer; 
     }
     tr.active { 
-        background:#dceeff; border-left:3px solid #2a7bd4; 
+        background:#dceeff; border-left:1px solid #2a7bd4; 
     }
     tr.note-row {
         background: #fff !important;
@@ -189,14 +189,22 @@
         border-collapse: collapse;
         margin: -1px 1px 1px 1px;
     }
-    .signature-table tr, .signature-table td{
+    .signature-table tr{
         border-top: none;
         border-right:1px solid #000;
         border-bottom:1px solid #000;
         border-left:1px solid #000;
-        padding:6px;
         text-align: center;
     }
+    .signature-table td {
+        border-top: none;
+        border-right:1px solid #000;
+        border-bottom:1px solid #000;
+        border-left:1px solid #000;
+        padding: 6px;
+        text-align: center;
+    }
+
     .actions {
         text-align: center;
         margin-top: 20px;
