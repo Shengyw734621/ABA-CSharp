@@ -107,7 +107,8 @@
     .customer-info input {
         font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
         border: none;
-        width: 70%;
+        width: 100%;
+        text-align: left;
     }
     .shipment-table{
         width: 99.8%;
@@ -221,8 +222,15 @@
         text-align: left;
         font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
     }
+    .ShipmentNoInput,
     .minor-ProductName{
         text-align: left;
+    }
+    .product-type{
+        font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+        text-align: center;
+        appearance: none; 
+        border: none;
     }
     button {
         margin: 5px;
@@ -260,7 +268,7 @@
         <!-- 客戶資訊 -->
         <div class="customer-info">
             <p></p>
-            <p class="ShipmentNo">出貨單號：<input type="text" name="ShipmentNo" value="CB-001-"/></p>
+            <p class="ShipmentNo">出貨單號：<input type="text" name="ShipmentNo" class="ShipmentNoInput" value="CB-001-"/></p>
             <p class="CustomerName">客　　戶：<input type="text" name="CustomerName" /></p>
             <p>
             出貨日期：
@@ -470,9 +478,39 @@
                 });
         });
     </script>
+    <script>
+        //出貨單產品類別載入
+        function loadProductTypes(selectElement) {
+            $.ajax({
+                url: '/Home/GetProductTypes',
+                type: 'GET',
+                success: function (data) {
+                    $(selectElement).empty();
+                    $(selectElement).append('<option value="">--請選擇--</option>');
+                    if (data.length === 0) {
+                        $(selectElement).append('<option value="">(沒有資料)</option>');
+                    } else {
+                        data.forEach(function (item) {
+                            $(selectElement).append('<option value="' + item + '">' + item + '</option>');
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.error("載入 product_type 失敗", err);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#shipmentItems tr.major td:nth-child(2)").each(function () {
+                $(this).html('<select name="ProductType" class="product-type"></select>');
+                loadProductTypes($(this).find("select"));
+            });
+        });
+    </script>
 
     <script>
-        //訂單項目欄位操作
+        //出貨單項目欄位操作
         (function () {
             const tbody = document.getElementById('shipmentItems');
             const addMajorBtn = document.getElementById('addMajorBtn');
@@ -486,12 +524,17 @@
                 tr.className = 'major';
                 tr.innerHTML = `
                     <td class="no-cell"></td>
-                    <td><input type="text" name="ProductType" /></td>
+                    <td><select name="ProductType" class="product-type"></select></td>
                     <td><textarea type="text" name="ProductName" class="major-ProductName"></textarea></td>
                     <td><input type="text" name="ProductSN" /></td>
                     <td><input type="text" name="Quantity" /></td>
                 `;
                 bindRowClick(tr);
+
+                 // 載入產品種類到 select
+                const select = tr.querySelector("select.product-type");
+                loadProductTypes(select);
+
                 return tr;
             }
 

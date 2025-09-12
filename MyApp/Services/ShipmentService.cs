@@ -29,11 +29,17 @@ namespace MyApp.Services
         public List<string> GetEmployeesByDepartment(string department)
         {
             using var conn = new MySqlConnection(_connectionString);
-            string sql = "SELECT First_Name, Last_Name FROM aba.employee WHERE department=@Dept";
+            string sql = "SELECT DISTINCT First_Name, Last_Name FROM aba.employee WHERE department = @Dept ORDER BY First_Name ASC;";
             var list = conn.Query(sql, new { Dept = department })
                         .Select(e => $"{e.First_Name} {e.Last_Name}")
                         .ToList();
             return list;
+        }
+       public List<string> GetProductTypes()
+        {
+            using var conn = new MySqlConnection(_connectionString);
+            string sql = "SELECT product_type FROM aba.product GROUP BY product_type ORDER BY product_type DESC;";
+            return conn.Query<string>(sql).ToList();
         }
     }
 }

@@ -252,6 +252,14 @@ public class HomeController : Controller
         return View();// 預設會去找 Views/Home/InsertShipment.cshtml
     }
 
+    //出貨單產品類別
+    [HttpGet]
+    public IActionResult GetProductTypes()
+    {
+        var productTypes = _shipmentService.GetProductTypes();
+        return Json(productTypes); 
+    }
+
     public IActionResult Maintenance()
     {
         return View();
