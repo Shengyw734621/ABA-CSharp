@@ -221,24 +221,23 @@
         transform: scale(0.8);
         border-radius: 0;        /* 完全方形 */
     }
+    .product-type-select{
+        text-align: center;
+        appearance: none; 
+        border: none;
+    }
     .major-ProductName{
         appearance: none;
         resize: none;
-        width: 300px;
+        width: 360px;
         height: 50px;
         border: none;
-        text-align: left;
+        text-align: center;
         font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
     }
     .ShipmentNoInput,
     .minor-ProductName{
         text-align: left;
-    }
-    .product-type{
-        font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
-        text-align: center;
-        appearance: none; 
-        border: none;
     }
     button {
         margin: 5px;
@@ -308,8 +307,14 @@
                     <!-- 範例第一列為大項 -->
                     <tr class="major">
                         <td class="no-cell">1</td>
-                        <td><input type="text" name="ProductType" /></td>
-                        <td><textarea type="text" name="ProductName" class="major-ProductName"></textarea></td>
+                        <td>
+                            <select name="ProductType" class="product-type-select"></select>
+                        </td>
+                        <td>
+                            <select name="ProductName" class="major-ProductName">
+                                <option value="">請先選擇產品類別</option>
+                            </select>
+                        </td>
                         <td><input type="text" name="ProductSN" /></td>
                         <td><input type="text" name="Quantity" /></td>
                     </tr>
@@ -488,33 +493,60 @@
     </script>
     <script>
         //出貨單產品類別載入
-        function loadProductTypes(selectElement) {
+        // AJAX 取得 product type
+        function loadProductTypes($select) {
             $.ajax({
                 url: '/Home/GetProductTypes',
                 type: 'GET',
                 success: function (data) {
-                    $(selectElement).empty();
-                    $(selectElement).append('<option value="">--請選擇--</option>');
-                    if (data.length === 0) {
-                        $(selectElement).append('<option value="">(沒有資料)</option>');
-                    } else {
-                        data.forEach(function (item) {
-                            $(selectElement).append('<option value="' + item + '">' + item + '</option>');
-                        });
-                    }
+                    $select.empty().append('<option value="">--請選擇--</option>');
+                    data.forEach(function (type) {
+                        $select.append('<option value="' + type + '">' + type + '</option>');
+                    });
                 },
                 error: function (err) {
                     console.error("載入 product_type 失敗", err);
+                    $select.html('<option value="">載入失敗</option>');
                 }
             });
         }
 
-        $(document).ready(function () {
-            $("#shipmentItems tr.major td:nth-child(2)").each(function () {
-                $(this).html('<select name="ProductType" class="product-type"></select>');
-                loadProductTypes($(this).find("select"));
-            });
+
+        // 事件委派：動態監聽所有 ProductType select
+        $(document).on("change", ".product-type-select", function () {
+            const selectedType = $(this).val();
+            const $row = $(this).closest("tr");
+            const $productNameSelect = $row.find(".major-ProductName");
+
+            $productNameSelect.html('<option value="">載入中...</option>');
+
+            if (selectedType) {
+                $.getJSON('/Home/GetProductNames', { type: selectedType })
+                .done(function(names) {
+                    $productNameSelect.html('<option value="">請選擇產品</option>');
+                    names.forEach(function(name) {
+                        $productNameSelect.append('<option value="' + name + '">' + name + '</option>');
+                    });
+                })
+                .fail(function() {
+                    $productNameSelect.html('<option value="">載入失敗</option>');
+                });
+            } else {
+                $productNameSelect.html('<option value="">請先選擇產品類別</option>');
+            }
         });
+
+        // 只要 document ready 就載入現有 row 的 ProductType
+        $(document).ready(function () {
+            loadAllProductTypeSelects();
+        });
+
+        // 統一函數：載入 tbody 內所有 ProductType select
+        function loadAllProductTypeSelects() {
+            $('#shipmentItems .product-type-select').each(function () {
+                loadProductTypes($(this));
+            });
+        }
     </script>
 
     <script>
@@ -532,16 +564,21 @@
                 tr.className = 'major';
                 tr.innerHTML = `
                     <td class="no-cell"></td>
-                    <td><select name="ProductType" class="product-type"></select></td>
-                    <td><textarea type="text" name="ProductName" class="major-ProductName"></textarea></td>
+                    <td>
+                        <select name="ProductType" class="product-type-select"></select>
+                    </td>
+                    <td>
+                        <select name="ProductName" class="major-ProductName">
+                            <option value="">請先選擇產品類別</option>
+                        </select>
+                    </td>
                     <td><input type="text" name="ProductSN" /></td>
                     <td><input type="text" name="Quantity" /></td>
                 `;
                 bindRowClick(tr);
 
-                 // 載入產品種類到 select
-                const select = tr.querySelector("select.product-type");
-                loadProductTypes(select);
+                // 新增 row 也要載入 ProductType
+                loadProductTypes($(tr).find('.product-type-select'));
 
                 return tr;
             }

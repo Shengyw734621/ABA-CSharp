@@ -260,6 +260,17 @@ public class HomeController : Controller
         return Json(productTypes); 
     }
 
+    //出貨單產品名稱
+    [HttpGet]
+    public IActionResult GetProductNames(string type)
+    {
+        if (string.IsNullOrEmpty(type))
+            return Json(new List<string>());
+
+        var productNames = _shipmentService.GetProductNamesByType(type) ?? new List<string>();
+        return Json(productNames);
+    }
+
     public IActionResult Maintenance()
     {
         return View();

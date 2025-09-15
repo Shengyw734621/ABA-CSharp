@@ -35,11 +35,18 @@ namespace MyApp.Services
                         .ToList();
             return list;
         }
-       public List<string> GetProductTypes()
+        public List<string> GetProductTypes()
         {
             using var conn = new MySqlConnection(_connectionString);
             string sql = "SELECT product_type FROM aba.product GROUP BY product_type ORDER BY product_type DESC;";
             return conn.Query<string>(sql).ToList();
+        }
+        
+        public List<string> GetProductNamesByType(string productType)
+        {
+            using var conn = new MySqlConnection(_connectionString);
+            string sql = "SELECT product_name FROM aba.product WHERE product_type = @type ORDER BY product_name ASC;";
+            return conn.Query<string>(sql, new { type = productType }).ToList();
         }
     }
 }
