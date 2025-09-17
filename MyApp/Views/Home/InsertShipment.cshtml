@@ -151,7 +151,7 @@
         background: #fff !important;
     }
     .note{
-        text-align: right;
+        text-align: left;
     }
     tr.sign-row{
         background: #fff !important;
@@ -226,7 +226,8 @@
         appearance: none; 
         border: none;
     }
-    .major-ProductName{
+    .major-ProductName,
+    .minor-ProductName{
         appearance: none;
         resize: none;
         width: 360px;
@@ -235,8 +236,8 @@
         text-align: center;
         font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
     }
-    .ShipmentNoInput,
-    .minor-ProductName{
+    .ShipmentNoInput
+    {
         text-align: left;
     }
     button {
@@ -580,21 +581,79 @@
                 // 新增 row 也要載入 ProductType
                 loadProductTypes($(tr).find('.product-type-select'));
 
+                // 🔑 從 major row 取得使用者選的 ProductName
+                const productName = majorRow.querySelector('.major-ProductName').value;
+                if (productName) {
+                    $.getJSON('/Home/GetAccessories', { productName: productName })
+                    .done(function(accessories) {
+                        if (accessories.length > 0) {
+                            let select = $('<select name="ProductName" class="minor-ProductName"></select>');
+                            select.append('<option value="">--請選擇配件--</option>');
+                            accessories.forEach(acc => {
+                                select.append('<option value="' + acc + '">' + acc + '</option>');
+                            });
+                            $(tr).find('.minor-product-cell').html(select);
+                        }
+                    })
+                    .fail(function() {
+                        console.error("載入 accessories 失敗");
+                    });
+                }
+
                 return tr;
             }
 
             // 建立細項列 DOM
-            function createMinorRow() {
+            function createMinorRow(majorProductName) {
                 const tr = document.createElement('tr');
                 tr.className = 'minor';
                 tr.innerHTML = `
                     <td class="no-cell"></td>
                     <td></td>
-                    <td><input type="text" name="ProductName" class="minor-ProductName"/></td>
+                    <td>
+                        <select name="ProductName" class="minor-ProductName">
+                            <option value="">請先選擇產品名稱</option>
+                        </select>
+                    </td>
                     <td><input type="text" name="ProductSN" /></td>
-                    <td style="text-align:center;"><input type="checkbox" name="QuantityCheckbox" style="with:50%;" /></td>
+                    <td style="text-align:center;"><input type="checkbox" name="QuantityCheckbox" /></td>
                 `;
                 bindRowClick(tr);
+
+                // 立刻載入（若 major 已選）
+                const $tr = $(tr);
+                const $minorSelect = $tr.find('.minor-ProductName');
+                if (majorProductName) {
+                    loadAccessories(majorProductName, $minorSelect);
+                } else {
+                    // 若 major 尚未選，顯示提示；當 major 之後選好時，前面的 change handler 會更新它們
+                    $minorSelect.html('<option value="">請先選擇產品名稱</option>');
+                }
+@* 
+                if (majorProductName) {
+                    $.ajax({
+                        url: `/Home/GetAccessories`,  // 你後端的 API
+                        type: 'GET',
+                        data: { productName: majorProductName },
+                        success: function (accessories) {
+                            const select = $(tr).find('.minor-ProductName');
+                            select.empty(); // 清空原本的 option
+                            if (accessories && accessories.length > 0) {
+                                select.append(`<option value="">請選擇配件</option>`);
+                                accessories.forEach(acc => {
+                                    select.append(`<option value="${acc}">${acc}</option>`);
+                                });
+                            } else {
+                                select.append(`<option value="">無可用配件</option>`);
+                            }
+                        },
+                        error: function () {
+                            const select = $(tr).find('.minor-ProductName');
+                            select.empty().append(`<option value="">載入失敗</option>`);
+                        }
+                    });
+                } *@
+
                 return tr;
             }
 
@@ -613,6 +672,52 @@
                 allRows.forEach(r => r.classList.remove('active'));
                 tr.classList.add('active');
             }
+
+            // ---------- 共用：載入配件的函式 ----------
+            function loadAccessories(productName, $select) {
+                if (!productName) {
+                    $select.html('<option value="">請先選擇產品名稱</option>');
+                    return;
+                }
+
+                $select.html('<option value="">載入中...</option>');
+
+                $.ajax({
+                    url: '/Home/GetAccessories', // 請確認 Controller route 是 /Home/GetAccessories
+                    type: 'GET',
+                    data: { productName: productName },
+                    success: function (data) {
+                        $select.empty();
+                        if (data && data.length > 0) {
+                            $select.append('<option value="">請選擇配件</option>');
+                            data.forEach(function (acc) {
+                                $select.append('<option value="' + acc + '">' + acc + '</option>');
+                            });
+                        } else {
+                            $select.append('<option value="">(無可用配件)</option>');
+                        }
+                    },
+                    error: function () {
+                        $select.html('<option value="">載入失敗</option>');
+                    }
+                });
+            }
+
+            // ---------- 當 major 的 productName 改變時，更新它底下所有 minor 的配件 select ----------
+            $(document).on('change', '.major-ProductName', function () {
+                const productName = $(this).val();
+                const $majorRow = $(this).closest('tr');
+
+                // 往下找所有屬於這個 major 的 minor（直到遇到下一個 major / note-row / sign-row）
+                let $next = $majorRow.next();
+                while ($next.length && $next.hasClass('minor')) {
+                    const $minorSelect = $next.find('.minor-ProductName');
+                    if ($minorSelect.length) {
+                        loadAccessories(productName, $minorSelect);
+                    }
+                    $next = $next.next();
+                }
+            });
 
             // 新增大項
             addMajorBtn.addEventListener('click', function () {
@@ -652,7 +757,10 @@
                     insertAfter = next;
                     next = insertAfter.nextElementSibling;
                 }
-                const newMinor = createMinorRow();
+
+                // 取得該 major 目前選的 productName（若存在）
+                const majorProductName = $(activeRow).find('.major-ProductName').val() || null;
+                const newMinor = createMinorRow(majorProductName);
                 insertAfter.after(newMinor);
             });
 

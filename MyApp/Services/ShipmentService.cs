@@ -41,12 +41,24 @@ namespace MyApp.Services
             string sql = "SELECT product_type FROM aba.product GROUP BY product_type ORDER BY product_type DESC;";
             return conn.Query<string>(sql).ToList();
         }
-        
+
         public List<string> GetProductNamesByType(string productType)
         {
             using var conn = new MySqlConnection(_connectionString);
             string sql = "SELECT product_name FROM aba.product WHERE product_type = @type ORDER BY product_name ASC;";
             return conn.Query<string>(sql, new { type = productType }).ToList();
+        }
+        public List<string> GetAccessoriesByProductName(string productName)
+        {
+            using var conn = new MySqlConnection(_connectionString);
+            string sql = @"
+                SELECT pa.accessory_name
+                FROM aba.product p
+                JOIN aba.product_accessory_map pam ON p.product_id = pam.product_id
+                JOIN aba.product_accessory pa ON pam.accessory_id = pa.accessory_id
+                WHERE p.product_name = @ProductName;
+            ";
+            return conn.Query<string>(sql, new { ProductName = productName }).ToList();
         }
     }
 }

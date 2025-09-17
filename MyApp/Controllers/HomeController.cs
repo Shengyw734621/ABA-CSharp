@@ -271,6 +271,14 @@ public class HomeController : Controller
         return Json(productNames);
     }
 
+    // 出貨單細項產品配件名稱
+    [HttpGet]
+    public IActionResult GetAccessories(string productName)
+    {
+        var list = _shipmentService.GetAccessoriesByProductName(productName) ?? new List<string>();
+        return Json(list);
+    }
+
     public IActionResult Maintenance()
     {
         return View();
