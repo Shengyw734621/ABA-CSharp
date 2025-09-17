@@ -581,7 +581,7 @@
                 // 新增 row 也要載入 ProductType
                 loadProductTypes($(tr).find('.product-type-select'));
 
-                // 🔑 從 major row 取得使用者選的 ProductName
+                @* // 🔑 從 major row 取得使用者選的 ProductName
                 const productName = majorRow.querySelector('.major-ProductName').value;
                 if (productName) {
                     $.getJSON('/Home/GetAccessories', { productName: productName })
@@ -598,7 +598,7 @@
                     .fail(function() {
                         console.error("載入 accessories 失敗");
                     });
-                }
+                } *@
 
                 return tr;
             }
