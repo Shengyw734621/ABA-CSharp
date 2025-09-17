@@ -629,30 +629,6 @@
                     // 若 major 尚未選，顯示提示；當 major 之後選好時，前面的 change handler 會更新它們
                     $minorSelect.html('<option value="">請先選擇產品名稱</option>');
                 }
-@* 
-                if (majorProductName) {
-                    $.ajax({
-                        url: `/Home/GetAccessories`,  // 你後端的 API
-                        type: 'GET',
-                        data: { productName: majorProductName },
-                        success: function (accessories) {
-                            const select = $(tr).find('.minor-ProductName');
-                            select.empty(); // 清空原本的 option
-                            if (accessories && accessories.length > 0) {
-                                select.append(`<option value="">請選擇配件</option>`);
-                                accessories.forEach(acc => {
-                                    select.append(`<option value="${acc}">${acc}</option>`);
-                                });
-                            } else {
-                                select.append(`<option value="">無可用配件</option>`);
-                            }
-                        },
-                        error: function () {
-                            const select = $(tr).find('.minor-ProductName');
-                            select.empty().append(`<option value="">載入失敗</option>`);
-                        }
-                    });
-                } *@
 
                 return tr;
             }
