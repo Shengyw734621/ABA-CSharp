@@ -279,6 +279,14 @@ public class HomeController : Controller
         return Json(list);
     }
 
+    //出貨單客戶名稱
+    [HttpGet]
+    public IActionResult GetCustomerNames(string customerName)
+    {
+        var list = _shipmentService.GetCustomerName(customerName) ?? new List<string>();
+        return Json(list);
+    }
+
     public IActionResult Maintenance()
     {
         return View();

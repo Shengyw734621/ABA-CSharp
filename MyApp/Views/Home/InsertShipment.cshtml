@@ -101,6 +101,11 @@
     .customer-info .ContactPerson{
         letter-spacing: -0.5em;   /* 分散三個字 */
     }
+    .customer-name-select{
+        appearance: none;
+        resize: none;
+        border: none;
+    }
     .customer-info .ShipmentNo{
         margin-left: 110px;
     }
@@ -277,7 +282,10 @@
         <div class="customer-info">
             <p></p>
             <p class="ShipmentNo">出貨單號：<input type="text" name="ShipmentNo" class="ShipmentNoInput" value="CB-001-"/></p>
-            <p class="CustomerName">客　　戶：<input type="text" name="CustomerName" /></p>
+            <p class="CustomerName">客　　戶：
+                <select name="CustomerName" class="customer-name-select"></select>
+                </select>
+            </p>
             <p>
             出貨日期：
                 <span class="date-select">
@@ -382,6 +390,34 @@
 
 @section Scripts{
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        //載入客戶名稱
+        function loadCustomerNames(selectElement) {
+            $.ajax({
+                url: '/Home/GetCustomerNames',
+                type: 'GET',
+                success: function(data) {
+                    $(selectElement).empty();
+                    $(selectElement).append('<option value="">請選擇客戶</option>');
+                    if (data.length === 0) {
+                        $(selectElement).append('<option value="">(沒有資料)</option>');
+                    } else {
+                        data.forEach(function(name) {
+                            $(selectElement).append('<option value="' + name + '">' + name + '</option>');
+                        });
+                    }
+                },
+                error: function(err) {
+                    console.error("載入客戶名稱失敗", err);
+                }
+            });
+        }
+
+        // DOM ready
+        $(document).ready(function() {
+            loadCustomerNames($('.customer-name-select'));
+        });
+    </script>
     <script>
         // 載入年份 & 月份
         const yearSelect = document.getElementById("year");
@@ -580,25 +616,6 @@
 
                 // 新增 row 也要載入 ProductType
                 loadProductTypes($(tr).find('.product-type-select'));
-
-                @* // 🔑 從 major row 取得使用者選的 ProductName
-                const productName = majorRow.querySelector('.major-ProductName').value;
-                if (productName) {
-                    $.getJSON('/Home/GetAccessories', { productName: productName })
-                    .done(function(accessories) {
-                        if (accessories.length > 0) {
-                            let select = $('<select name="ProductName" class="minor-ProductName"></select>');
-                            select.append('<option value="">--請選擇配件--</option>');
-                            accessories.forEach(acc => {
-                                select.append('<option value="' + acc + '">' + acc + '</option>');
-                            });
-                            $(tr).find('.minor-product-cell').html(select);
-                        }
-                    })
-                    .fail(function() {
-                        console.error("載入 accessories 失敗");
-                    });
-                } *@
 
                 return tr;
             }

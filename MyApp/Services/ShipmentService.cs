@@ -60,5 +60,13 @@ namespace MyApp.Services
             ";
             return conn.Query<string>(sql, new { ProductName = productName }).ToList();
         }
+        public List<string> GetCustomerName(string customerName)
+        {
+            using var conn = new MySqlConnection(_connectionString);
+            string sql = @"
+                select 公司名稱  FROM aba.customer order by 公司名稱 desc;
+            ";
+            return conn.Query<string>(sql, new { CustomerName = customerName }).ToList();
+        }
     }
 }
