@@ -13,6 +13,13 @@ namespace MyApp.Services
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+        public List<string> GetContactPersons(string customerName)
+        {
+            using var conn = new MySqlConnection(_connectionString);
+            string sql = "SELECT 業務窗口 FROM aba.customer WHERE 公司名稱 = @CustomerName;";
+            return conn.Query<string>(sql, new { CustomerName = customerName }).ToList();
+        }
+
         public List<string> GetAdministrativeEmployees()
         {
             using var conn = new MySqlConnection(_connectionString);

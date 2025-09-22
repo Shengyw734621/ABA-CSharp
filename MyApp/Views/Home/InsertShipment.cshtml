@@ -101,7 +101,8 @@
     .customer-info .ContactPerson{
         letter-spacing: -0.5em;   /* 分散三個字 */
     }
-    .customer-name-select{
+    .customer-name-select,
+    .contact-person-select{
         appearance: none;
         resize: none;
         border: none;
@@ -294,7 +295,10 @@
                     <select id="day"></select>
                 </span>
             </p>
-            <p class="ContactPerson">聯　　絡　　人　：<input type="text" name="ContactPerson" /></p>
+            <p class="ContactPerson">聯　　絡　　人　：
+                <select name="ContactPerson" class="contact-person-select">
+                </select>
+            </p>
             <p>電　　話：<input type="text" name="Phone" /></p>
             <p>出貨地址：<input type="text" name="Address"/></p> 
             <p>傳　　真：<input type="text" name="Fax" /></p>
@@ -390,7 +394,7 @@
 
 @section Scripts{
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script>
+    @* <script>
         //載入客戶名稱
         function loadCustomerNames(selectElement) {
             $.ajax({
@@ -417,7 +421,7 @@
         $(document).ready(function() {
             loadCustomerNames($('.customer-name-select'));
         });
-    </script>
+    </script> *@
     <script>
         // 載入年份 & 月份
         const yearSelect = document.getElementById("year");
@@ -527,6 +531,55 @@
                     alert("載入員工失敗！");
                 });
         });
+    </script>
+    <script>
+        //出貨單聯絡人載入
+        //AJAX取得聯絡人
+        function loadCustomerNames($select) {
+            $.getJSON('/Home/GetCustomerNames')
+            .done(function (data) {
+                $select.empty().append('<option value="">請選擇客戶</option>');
+                data.forEach(function (name) {
+                    $select.append('<option value="' + name + '">' + name + '</option>');
+                });
+            })
+            .fail(function (err) {
+                console.error("載入客戶清單失敗", err);
+            });
+        }
+
+       // 事件委派：當客戶被選中 → 載入對應聯絡人
+        $(document).on('change', '.customer-name-select', function () {
+            const customerName = $(this).val();
+            const contactSelect = $('.contact-person-select');
+
+
+            if (!customerName) {
+                contactSelect.empty().append('<option value="">請先選擇客戶</option>');
+                return;
+            }
+
+            $.getJSON('/Home/GetContactPersons', { customerName: customerName })
+                .done(function (contacts) {
+                    contactSelect.empty().append('<option value="">請選擇聯絡人</option>');
+                    if (contacts.length === 0) {
+                        contactSelect.append('<option value="">(沒有資料)</option>');
+                    } else {
+                        contacts.forEach(function (c) {
+                            contactSelect.append('<option value="' + c + '">' + c + '</option>');
+                        });
+                    }
+                })
+                .fail(function (err) {
+                    console.error("載入聯絡人失敗", err);
+                });
+        });
+
+        // 頁面初始化只載入客戶清單，不載入聯絡人
+        $(document).ready(function () {
+            loadCustomerNames($('.customer-name-select')); 
+        });
+
     </script>
     <script>
         //出貨單產品類別載入

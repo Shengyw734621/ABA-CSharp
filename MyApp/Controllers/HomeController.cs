@@ -287,6 +287,16 @@ public class HomeController : Controller
         return Json(list);
     }
 
+    //出貨單聯絡人
+    public IActionResult GetContactPersons(string customerName)
+    {
+        if (string.IsNullOrEmpty(customerName))
+            return Json(new List<string>());
+
+        var contactPerson = _shipmentService.GetContactPersons(customerName) ?? new List<string>();
+        return Json(contactPerson);
+    }
+
     public IActionResult Maintenance()
     {
         return View();
